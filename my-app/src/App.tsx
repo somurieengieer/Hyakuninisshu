@@ -3,11 +3,13 @@ import logo from './logo.svg';
 import {Counter} from './features/counter/Counter';
 import './App.css';
 import {Songs} from "./features/song/Songs";
+import {SongArchive} from "./features/song/SongArchive";
 
 function App() {
   return (
     <div className="App">
       <div>
+        <SongArchive />
         <Songs />
       </div>
       <header className="App-header">
