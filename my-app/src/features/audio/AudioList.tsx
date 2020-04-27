@@ -1,9 +1,8 @@
 import React, {useState} from 'react';
 import {makeStyles} from "@material-ui/core/styles";
 import {Box} from "@material-ui/core";
-import {useSelector} from "react-redux";
-import {selectActiveNumbers} from "../song/songSlice";
 import {SongInfo} from "../song/Song";
+import ReactSound from "react-sound";
 
 
 const useStyles = makeStyles({
@@ -23,44 +22,43 @@ const useStyles = makeStyles({
   },
 });
 
-interface AudioListProps {
-  songNumbers: number[]
-}
-
 interface PlayingAudioProps {
   songInfo: SongInfo
   playEnded: () => void
+  playingStatus: PlayStatuses
 }
 
-export function PlayingAudio({songInfo, playEnded}: PlayingAudioProps) {
+export enum PlayStatuses {
+  PLAYING = 'PLAYING',
+  STOPPED = 'STOPPED',
+  PAUSED = 'PAUSED'
+}
+
+export function PlayingAudio({songInfo, playEnded, playingStatus}: PlayingAudioProps) {
   return (
-    <audio id={'audio'+songInfo.num}
-           src={songInfo.path}
-           className='audioSong'
-           autoPlay={true}
-           controls={true}
-           onEnded={playEnded}
+    <ReactSound url={songInfo.path}
+                playStatus={playingStatus}
+                onFinishedPlaying={playEnded}
     />
   )
 }
 
-export function AudioList({songNumbers}: AudioListProps) {
-  const classes = useStyles();
+interface AudioListProps {
+  songNums: number[]
+  suspend: boolean
+}
 
-  const songNums: number[] = useSelector(selectActiveNumbers);
+export function AudioList({songNums, suspend}: AudioListProps) {
+  const classes = useStyles();
 
   const [playing, setPlaying] = useState<boolean>(false);
   const [playingIndex, setPlayingIndex] = useState<number>(0);
-  const [playingSong, setPlayingSong]  = useState<SongInfo>(new SongInfo(songNumbers[playingIndex]));
+  const [playingSong, setPlayingSong]  = useState<SongInfo>(new SongInfo(songNums[playingIndex]));
   // const playingSong = new SongInfo(songNumbers[playingIndex])
 
-  const playAndStop = () => {
-    setPlaying(!playing)
-  };
-
   const playEnded = () => {
-    console.log(playingIndex, songNumbers);
-    if (playingIndex < songNumbers.length + 1) {
+    console.log(playingIndex, songNums);
+    if (playingIndex < songNums.length + 1) {
       setPlayingIndex(playingIndex+1);
       setPlayingSong(new SongInfo(playingIndex))
     }
@@ -68,7 +66,7 @@ export function AudioList({songNumbers}: AudioListProps) {
 
   return (
     <Box m={1} p={1}>
-      <PlayingAudio songInfo={playingSong} playEnded={playEnded} />
+      <PlayingAudio songInfo={playingSong} playEnded={playEnded} playingStatus={PlayStatuses.PLAYING} />
     </Box>
 
   );
