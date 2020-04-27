@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {add, remove, selectActiveNumbers,} from './songSlice';
 import {Checkbox, ListItem, ListItemIcon, ListItemText} from "@material-ui/core";
@@ -31,6 +31,10 @@ export function Song({songInfo}: SongProps) {
 
   const classes = useStyles();
 
+  useEffect(() => {
+    setCheckStatus(activeNumbers.includes(songInfo.num))
+  }, activeNumbers);
+
   const handleToggle = (value: any) => () => {
     dispatch((checkStatus ? remove : add)(songInfo.num));
     setCheckStatus(!checkStatus)
@@ -47,7 +51,9 @@ export function Song({songInfo}: SongProps) {
           inputProps={{ 'aria-labelledby': labelId }}
         />
       </ListItemIcon>
-      <ListItemText id={labelId} primary={songInfo.song} />
+      <ListItemText id={labelId+'number'} primary={songInfo.num} />
+      <ListItemText id={labelId+'song'} primary={songInfo.song} />
+      <ListItemText id={labelId+'song'} primary={songInfo.singer} />
       {/*<ListItemSecondaryAction>*/}
       {/*  <IconButton edge="end" aria-label="comments">*/}
       {/*    <CommentIcon />*/}
@@ -70,11 +76,13 @@ export class SongInfo {
     this.song = songTmp.song;
     // @ts-ignore
     this.singer = songTmp.singer;
-    this.path = './public/song' + ('000' + (songNumber+1)).slice(-3) + '.m4a'
+    const numStr = ('000' + (songNumber%5+1)).slice(-3);
+    this.path = `${process.env.PUBLIC_URL}/songs/${numStr}番.m4a`
   }
 }
 
 const allSongs = [
+  {num:0, song:[ '難波津に', '咲くやこの花', '冬ごもり', '今を春べと', '咲くやこの花' ], singer: '王仁博士'},
   {num:1, song:[ '秋の田の', 'かりほの庵の', '苫をあらみ', 'わが衣手は', '露にぬれつつ' ], singer: '天智天皇'},
   {num:2, song:[ '春すぎて', '夏来にけらし', '白妙の', '衣ほすてふ', '天の香具山' ], singer: '持統天皇'},
   {num:3, song:[ 'あしびきの', '山鳥の尾の', 'しだり尾の', 'ながながし夜を', 'ひとりかも寝む' ], singer: '柿本人麻呂'},

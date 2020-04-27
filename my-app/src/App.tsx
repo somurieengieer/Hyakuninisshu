@@ -4,11 +4,13 @@ import {Counter} from './features/counter/Counter';
 import './App.css';
 import {Songs} from "./features/song/Songs";
 import {SongArchive} from "./features/song/SongArchive";
+import {AudioPlayer} from "./features/audio/AudioPlayer";
 
 function App() {
   return (
     <div className="App">
       <div>
+        <AudioPlayer />
         <SongArchive />
         <Songs />
       </div>

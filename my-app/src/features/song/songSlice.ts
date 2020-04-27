@@ -2,7 +2,7 @@ import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 import {RootState} from '../../app/store';
 
 // @ts-ignore
-export const allNumbers: number[] = [...Array(99).keys()];
+export const allNumbers: number[] = [...Array(100).keys()].map(n => n+1);
 
 interface CounterState {
   activeNumbers: number[]
@@ -19,6 +19,9 @@ export const songSlice = createSlice({
     add: (state, action: PayloadAction<number>) => {
       state.activeNumbers.concat(action.payload);
     },
+    replace: (state, action: PayloadAction<number[]>) => {
+      state.activeNumbers = action.payload;
+    },
     remove: (state, action: PayloadAction<number>) => {
       const idx = state.activeNumbers.indexOf(action.payload);
       state.activeNumbers.splice(idx, 1);
@@ -26,7 +29,7 @@ export const songSlice = createSlice({
   },
 });
 
-export const { add, remove } = songSlice.actions;
+export const { add, replace, remove } = songSlice.actions;
 
 // The function below is called a selector and allows us to select a value from
 // the state. Selectors can also be defined inline where they're used instead of
