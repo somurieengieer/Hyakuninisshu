@@ -4,11 +4,11 @@ import {RootState} from '../../app/store';
 // @ts-ignore
 export const allNumbers: number[] = [...Array(100).keys()].map(n => n+1);
 
-interface CounterState {
+interface State {
   activeNumbers: number[]
 }
 
-const initialState: CounterState = {
+const initialState: State = {
   activeNumbers: allNumbers
 };
 
