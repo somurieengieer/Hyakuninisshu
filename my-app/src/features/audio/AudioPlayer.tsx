@@ -67,7 +67,7 @@ export function AudioPlayer({songNums, callbackStop}: AudioPlayerProps) {
         <Box display="flex" justifyContent="center" alignItems="center" >
           <Box p={1}>
             <IconButton onClick={() => setPlayingIndex(playingIndex - 1)}
-                        disabled={true}
+                        disabled={ playingIndex <= 0 }
                         component="span" >
               <SkipPreviousIcon style={{fontSize: '6em'}} />
             </IconButton>
@@ -87,7 +87,7 @@ export function AudioPlayer({songNums, callbackStop}: AudioPlayerProps) {
           </Box>
           <Box p={1}>
             <IconButton onClick={() => setPlayingIndex(playingIndex + 1)}
-                        disabled={true}
+                        disabled={ playingIndex >= songNums.length - 1 }
                         component="span" >
               <SkipNextIcon style={{fontSize: '6em'}} />
             </IconButton>

@@ -11,7 +11,7 @@ export function Songs() {
   return (
     <div>
       {songNums.map(num =>
-       (<Song songInfo={new SongInfo(num)} />)
+       (<Song key={num} songInfo={new SongInfo(num)} />)
       )}
     </div>
   );

@@ -59,7 +59,7 @@ export function SongArchive() {
   return (
     <div>
       {songArchives.map(({title, songs})=> (
-        <Button onClick={() => replaceNumbers(songs)}>
+        <Button key={title} onClick={() => replaceNumbers(songs)}>
           <Card className={classes.root}>
           <CardContent>
             {/*<Typography className={classes.title} color="textSecondary" gutterBottom>*/}

@@ -33,7 +33,7 @@ export function Song({songInfo}: SongProps) {
 
   useEffect(() => {
     setCheckStatus(activeNumbers.includes(songInfo.num))
-  }, activeNumbers);
+  }, [activeNumbers.join(',')]);
 
   const handleToggle = (value: any) => () => {
     dispatch((checkStatus ? remove : add)(songInfo.num));
