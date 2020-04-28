@@ -39,12 +39,19 @@ export function AudioPlayer({songNums, callbackStop}: AudioPlayerProps) {
 
   const [playStatus, setPlayStatus] = useState<PlayStatuses>(PlayStatuses.PLAYING);
   const [playingIndex, setPlayingIndex] = useState<number>(0);
-  const [playingSong, setPlayingSong]  = useState<SongInfo>(new SongInfo(songNums[playingIndex]));
+  // const [playingSong, setPlayingSong]  = useState<SongInfo>(new SongInfo(songNums[playingIndex]));
+
+  console.log('called AudioPlayer', songNums, playingIndex, songNums.length);
+
+  const playingSong = new SongInfo(songNums[playingIndex]);
 
   const playEnded = () => {
-    if (playingIndex < songNums.length + 1) {
+    if (playingIndex < songNums.length - 1) {
+      // setPlayingSong(new SongInfo(songNums[playingIndex+1])) // TODO: 連続でやるとplayingIndexに反映されていない？
       setPlayingIndex(playingIndex+1);
-      setPlayingSong(new SongInfo(playingIndex))
+    } else {
+      setPlayingIndex(0);
+      setPlayStatus(PlayStatuses.STOPPED)
     }
   };
 

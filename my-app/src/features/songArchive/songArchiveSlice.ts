@@ -31,11 +31,11 @@ export function getSongArchive(title: string): SongArchive {
   return (songArchives.find(s => s.title == title) as SongArchive)
 }
 
-interface CounterState {
+interface State {
   activeArchive: SongArchive
 }
 
-const initialState: CounterState = {
+const initialState: State = {
   activeArchive: songArchives[0]
 };
 

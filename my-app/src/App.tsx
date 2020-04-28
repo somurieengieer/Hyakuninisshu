@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import {Songs} from "./features/song/Songs";
-import {SongArchive} from "./features/song/SongArchive";
+import {SongArchive} from "./features/songArchive/SongArchive";
 import {AudioPlayerComponent} from "./features/audio/AudioPlayerComponent";
 
 function App() {

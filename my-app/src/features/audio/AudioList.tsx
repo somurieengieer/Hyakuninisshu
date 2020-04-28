@@ -36,7 +36,7 @@ export enum PlayStatuses {
 
 export function PlayingAudio({songInfo, playEnded, playingStatus}: PlayingAudioProps) {
 
-  console.log(songInfo);
+  console.log('called PlayingAudio', songInfo);
 
   return (
     <ReactSound url={songInfo.path}

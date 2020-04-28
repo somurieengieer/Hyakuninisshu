@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import {makeStyles} from "@material-ui/core/styles";
 import {Button, Card, CardContent, Typography} from "@material-ui/core";
 import {useDispatch, useSelector} from "react-redux";
-import {replace} from './songSlice';
+import {replace} from '../song/songSlice';
 import {getSongArchive, selectActiveArchive, setArchive, songArchives} from "./songArchiveSlice";
 import classNames from "classnames";
 

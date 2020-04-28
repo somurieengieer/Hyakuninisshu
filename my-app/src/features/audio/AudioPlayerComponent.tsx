@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {makeStyles} from "@material-ui/core/styles";
 import {IconButton} from "@material-ui/core";
 import PlayCircleFilledIcon from '@material-ui/icons/PlayCircleFilled';
@@ -27,12 +27,24 @@ const useStyles = makeStyles({
 export function AudioPlayerComponent() {
   const classes = useStyles();
 
-  const songNums = useSelector(selectActiveNumbers);
+  const activeSongNums = useSelector(selectActiveNumbers);
   const [playing, setPlaying] = useState<boolean>(false);
+  const playSongs = [0].concat(activeSongNums);
 
   const stoppedPlay = () => {
     setPlaying(false)
   };
+
+  // TODO: test
+  useEffect(() => {
+    console.log('changed activeSongNums')
+  }, [activeSongNums]);
+  useEffect(() => {
+    console.log('changed playing')
+  }, [playing]);
+  // useEffect(() => {
+  //   console.log('changed playSongs')
+  // }, [playSongs])
 
   return (
     <>
@@ -40,7 +52,7 @@ export function AudioPlayerComponent() {
                   component="span" >
         <PlayCircleFilledIcon style={{fontSize: '12em'}} />
       </IconButton>
-      { playing && (<AudioPlayer songNums={songNums} callbackStop={stoppedPlay}/>)}
+      { playing && (<AudioPlayer songNums={playSongs} callbackStop={stoppedPlay}/>)}
     </>
   );
 }
