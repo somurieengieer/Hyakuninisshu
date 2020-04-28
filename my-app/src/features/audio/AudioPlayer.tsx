@@ -49,11 +49,15 @@ export function AudioPlayer({songNums, callbackStop}: AudioPlayerProps) {
   // };
 
   const playEnded = () => {
-    console.log(playingIndex, songNums);
     if (playingIndex < songNums.length + 1) {
       setPlayingIndex(playingIndex+1);
       setPlayingSong(new SongInfo(playingIndex))
     }
+  };
+
+  const stop = () => {
+    setPlayStatus(PlayStatuses.STOPPED);
+    callbackStop()
   };
 
   return (
@@ -97,12 +101,14 @@ export function AudioPlayer({songNums, callbackStop}: AudioPlayerProps) {
           </Box>
         </Box>
         <Box display="flex" justifyContent="center">
-          <IconButton onClick={() => setPlayStatus(PlayStatuses.STOPPED)}
+          <IconButton onClick={stop}
                       component="span" >
             <StopIcon style={{fontSize: '6em'}} />
           </IconButton>
         </Box>
         <PlayingAudio songInfo={playingSong} playEnded={playEnded} playingStatus={playStatus} />
+
+
       </Box>
     </Modal>
   );
