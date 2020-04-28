@@ -76,8 +76,10 @@ export class SongInfo {
     this.song = songTmp.song;
     // @ts-ignore
     this.singer = songTmp.singer;
-    const numStr = ('000' + (songNumber%5+1)).slice(-3);
-    this.path = `${process.env.PUBLIC_URL}/songs/${numStr}番.m4a`
+    const numStr = ('000' + (songNumber%50)).slice(-3);
+    this.path = `${process.env.PUBLIC_URL}/songs/${numStr}番.m4a`;
+
+    console.log('SongInfo Construtor ', songNumber, this.song, this.singer, this.path)
   }
 }
 

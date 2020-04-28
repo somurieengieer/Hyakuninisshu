@@ -8,6 +8,7 @@ import SkipNextIcon from '@material-ui/icons/SkipNext';
 import StopIcon from '@material-ui/icons/Stop';
 import {PlayingAudio, PlayStatuses} from "./AudioList";
 import {SongInfo} from "../song/Song";
+import {SongTypography, TextPosition} from "./SongTypography";
 
 
 const useStyles = makeStyles({
@@ -39,14 +40,6 @@ export function AudioPlayer({songNums, callbackStop}: AudioPlayerProps) {
   const [playStatus, setPlayStatus] = useState<PlayStatuses>(PlayStatuses.PLAYING);
   const [playingIndex, setPlayingIndex] = useState<number>(0);
   const [playingSong, setPlayingSong]  = useState<SongInfo>(new SongInfo(songNums[playingIndex]));
-
-  // const replaceNumbers = (numbers: number[]): void => {
-  //   dispatch(replace(numbers));
-  // }
-
-  // const playAndStop = () => {
-  //   setPlayStatus(!playing)
-  // };
 
   const playEnded = () => {
     if (playingIndex < songNums.length + 1) {
@@ -106,9 +99,28 @@ export function AudioPlayer({songNums, callbackStop}: AudioPlayerProps) {
             <StopIcon style={{fontSize: '6em'}} />
           </IconButton>
         </Box>
+
         <PlayingAudio songInfo={playingSong} playEnded={playEnded} playingStatus={playStatus} />
 
-
+        <Box display="flex" justifyContent="center">
+          <Box style={{width: '600px'}}>
+            <SongTypography position={TextPosition.LEFT}>
+              {playingSong.song[0]}
+            </SongTypography>
+            <SongTypography position={TextPosition.CENTER}>
+              {playingSong.song[1]}
+            </SongTypography>
+            <SongTypography position={TextPosition.RIGHT}>
+              {playingSong.song[2]}
+            </SongTypography>
+            <SongTypography position={TextPosition.LEFT}>
+              {playingSong.song[3]}
+            </SongTypography>
+            <SongTypography position={TextPosition.CENTER}>
+              {playingSong.song[4]}
+            </SongTypography>
+          </Box>
+        </Box>
       </Box>
     </Modal>
   );
