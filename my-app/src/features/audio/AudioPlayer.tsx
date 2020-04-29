@@ -9,6 +9,7 @@ import {PlayingAudio, PlayStatuses} from "./AudioList";
 import {SongInfo} from "../song/Song";
 import {SongTypography, TextPosition} from "./SongTypography";
 import CloseIcon from '@material-ui/icons/Close';
+import {theme} from "../../materialui/theme";
 
 
 const useStyles = makeStyles({
@@ -26,6 +27,30 @@ const useStyles = makeStyles({
     backgroundImage: `url(${process.env.PUBLIC_URL}/image/wagara_bottom.png)`,
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'bottom right 0px',
+  },
+  iconBig: {
+    [theme.breakpoints.down('xs')]: {
+      fontSize: '6em'
+    },
+    [theme.breakpoints.up('sm')]: {
+      fontSize: '10em'
+    }
+  },
+  iconSmall: {
+    [theme.breakpoints.down('xs')]: {
+      fontSize: '3em'
+    },
+    [theme.breakpoints.up('sm')]: {
+      fontSize: '6em'
+    }
+  },
+  songArea: {
+    [theme.breakpoints.down('xs')]: {
+      width: 400
+    },
+    [theme.breakpoints.up('sm')]: {
+      width: 560,
+    }
   },
   bullet: {
     display: 'inline-block',
@@ -93,19 +118,19 @@ export function AudioPlayer({songNums, callbackStop}: AudioPlayerProps) {
                 <IconButton onClick={() => setPlayingIndex(playingIndex - 1)}
                             disabled={ playingIndex <= 0 }
                             component="span" >
-                  <SkipPreviousIcon style={{fontSize: '6em'}} />
+                  <SkipPreviousIcon className={classes.iconSmall} />
                 </IconButton>
               </Box>
               <Box p={1}>
                 {playStatus == PlayStatuses.PLAYING ? (
                   <IconButton onClick={() => setPlayStatus(PlayStatuses.PAUSED)}
                               component="span" >
-                    <PauseCircleFilledIcon style={{fontSize: '10em'}} />
+                    <PauseCircleFilledIcon className={classes.iconBig} />
                   </IconButton>
                 ) : (
                   <IconButton onClick={() => setPlayStatus(PlayStatuses.PLAYING)}
                               component="span" >
-                    <PlayCircleFilledIcon style={{fontSize: '10em'}} />
+                    <PlayCircleFilledIcon className={classes.iconBig} />
                   </IconButton>
                 )}
               </Box>
@@ -113,7 +138,7 @@ export function AudioPlayer({songNums, callbackStop}: AudioPlayerProps) {
                 <IconButton onClick={() => setPlayingIndex(playingIndex + 1)}
                             disabled={ playingIndex >= songNums.length - 1 }
                             component="span" >
-                  <SkipNextIcon style={{fontSize: '6em'}} />
+                  <SkipNextIcon className={classes.iconSmall} />
                 </IconButton>
               </Box>
             </Box>
@@ -124,7 +149,7 @@ export function AudioPlayer({songNums, callbackStop}: AudioPlayerProps) {
           <Box display="flex" justifyContent="center"
                className={classes.paperBottom}
           >
-            <Box style={{width: '600px'}}>
+            <Box className={classes.songArea}>
               <SongTypography position={TextPosition.LEFT}>
                 {playingSong.song[0]}
               </SongTypography>

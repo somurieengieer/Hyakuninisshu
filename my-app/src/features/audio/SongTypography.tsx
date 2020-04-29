@@ -1,11 +1,20 @@
 import React from 'react';
 import {makeStyles} from "@material-ui/core/styles";
 import {Box, Typography} from "@material-ui/core";
+import {theme} from "../../materialui/theme";
 
 
 const useStyles = makeStyles({
   root: {
     minWidth: 275,
+  },
+  songFont: {
+    [theme.breakpoints.down('xs')]: {
+      fontSize: '1em'
+    },
+    [theme.breakpoints.up('sm')]: {
+      fontSize: '1.5em'
+    }
   },
   bullet: {
     display: 'inline-block',
@@ -39,7 +48,7 @@ export const SongTypography: React.FC<SongTypographyProps> = ({position, childre
   return (
     <Box display="flex" justifyContent={position}>
       <Box>
-        <Typography variant="h3" gutterBottom>
+        <Typography variant='h3' gutterBottom>
           {children}
         </Typography>
       </Box>

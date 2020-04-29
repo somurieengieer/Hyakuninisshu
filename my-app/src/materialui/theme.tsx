@@ -21,8 +21,23 @@ const base = {
     ].join(','),
   },
 };
-const mui = {
-};
-export const theme = createMuiTheme(  // #1
-  Object.assign(base, mui)
+
+const defaultTheme = createMuiTheme(  // #1
+  Object.assign(base)
 );
+
+const mui = {
+  ...defaultTheme,
+  overrides: {
+    MuiTypography: {
+      h3: {
+        fontSize: "3rem",
+        [defaultTheme.breakpoints.down("xs")]: {
+          fontSize: "2rem"
+        }
+      }
+    }
+  }
+};
+
+export const theme = mui;
