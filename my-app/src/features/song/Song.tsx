@@ -1,14 +1,13 @@
 import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {add, remove, selectActiveNumbers,} from './songSlice';
-import {Checkbox, ListItem, ListItemIcon, ListItemText} from "@material-ui/core";
+import {Checkbox, ListItem, ListItemIcon, ListItemSecondaryAction, ListItemText, Typography} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
+import {theme} from "../../materialui/theme";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: '100%',
-    maxWidth: 360,
-    backgroundColor: theme.palette.background.paper,
+    fontSize: '1em',
   },
 }));
 
@@ -41,7 +40,10 @@ export function Song({songInfo}: SongProps) {
   };
 
   return (
-    <ListItem key={songInfo.num} role={undefined} dense button onClick={handleToggle(songInfo.num)}>
+    <ListItem key={songInfo.num} role={undefined} dense button
+              onClick={handleToggle(songInfo.num)}
+              className={classes.root}
+    >
       <ListItemIcon>
         <Checkbox
           edge="start"
@@ -51,9 +53,17 @@ export function Song({songInfo}: SongProps) {
           inputProps={{ 'aria-labelledby': labelId }}
         />
       </ListItemIcon>
-      <ListItemText id={labelId+'number'} primary={songInfo.num} />
-      <ListItemText id={labelId+'song'} primary={songInfo.song} />
-      <ListItemText id={labelId+'song'} primary={songInfo.singer} />
+      <ListItemText id={labelId+'number'} primary={songInfo.num}  />
+      <ListItemText id={labelId+'song'} primary={songInfo.song}
+                    style={{marginLeft: theme.spacing(2),
+                      marginRight: theme.spacing(7),
+                    }}
+      />
+      <ListItemSecondaryAction>
+        <Typography >
+          {songInfo.singer}
+        </Typography>
+      </ListItemSecondaryAction>
       {/*<ListItemSecondaryAction>*/}
       {/*  <IconButton edge="end" aria-label="comments">*/}
       {/*    <CommentIcon />*/}

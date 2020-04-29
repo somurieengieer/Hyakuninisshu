@@ -1,5 +1,6 @@
 import React from 'react';
 import {Song, SongInfo} from "./Song";
+import {List} from "@material-ui/core";
 
 export function Songs() {
 
@@ -7,10 +8,10 @@ export function Songs() {
   const songNums: number[] = [...Array(100).keys()].map(n => n+1);
 
   return (
-    <div>
+    <List>
       {songNums.map(num =>
        (<Song key={num} songInfo={new SongInfo(num)} />)
       )}
-    </div>
+    </List>
   );
 }
