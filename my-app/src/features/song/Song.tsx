@@ -54,7 +54,7 @@ export function Song({songInfo}: SongProps) {
         />
       </ListItemIcon>
       <ListItemText id={labelId+'number'} primary={songInfo.num}  />
-      <ListItemText id={labelId+'song'} primary={songInfo.song}
+      <ListItemText id={labelId+'song'} primary={songInfo.songDisplay()}
                     style={{marginLeft: theme.spacing(2),
                       marginRight: theme.spacing(7),
                     }}
@@ -90,6 +90,10 @@ export class SongInfo {
     this.path = `${process.env.PUBLIC_URL}/songs/${numStr}番.m4a`;
 
     console.log('SongInfo Construtor ', songNumber, this.song, this.singer, this.path)
+  }
+
+  public songDisplay(): string {
+    return this.song.join(' ')
   }
 }
 
