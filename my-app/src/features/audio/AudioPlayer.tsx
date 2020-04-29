@@ -5,10 +5,10 @@ import PlayCircleFilledIcon from '@material-ui/icons/PlayCircleFilled';
 import PauseCircleFilledIcon from '@material-ui/icons/PauseCircleFilled';
 import SkipPreviousIcon from '@material-ui/icons/SkipPrevious';
 import SkipNextIcon from '@material-ui/icons/SkipNext';
-import StopIcon from '@material-ui/icons/Stop';
 import {PlayingAudio, PlayStatuses} from "./AudioList";
 import {SongInfo} from "../song/Song";
 import {SongTypography, TextPosition} from "./SongTypography";
+import CloseIcon from '@material-ui/icons/Close';
 
 
 const useStyles = makeStyles({
@@ -78,72 +78,71 @@ export function AudioPlayer({songNums, callbackStop}: AudioPlayerProps) {
       aria-labelledby="simple-modal-title"
       aria-describedby="simple-modal-description"
     >
-
-      <Box m={1} p={1} className={classes.paper}>
-        <div >
-        <Box display="flex" justifyContent="center" alignItems="center"
-             className={classes.paperTop}
-        >
-          <Box p={1}>
-            <IconButton onClick={() => setPlayingIndex(playingIndex - 1)}
-                        disabled={ playingIndex <= 0 }
-                        component="span" >
-              <SkipPreviousIcon style={{fontSize: '6em'}} />
-            </IconButton>
-          </Box>
-          <Box p={1}>
-            {playStatus == PlayStatuses.PLAYING ? (
-              <IconButton onClick={() => setPlayStatus(PlayStatuses.PAUSED)}
+        <Box m={1} p={1} className={classes.paper}>
+          <Box className={classes.paperTop}>
+            <Box display="flex" justifyContent="flex-end" p={1}>
+              <IconButton onClick={stop}
                           component="span" >
-                <PauseCircleFilledIcon style={{fontSize: '12em'}} />
+                <CloseIcon style={{fontSize: '3em'}} />
               </IconButton>
-            ) : (
-              <IconButton onClick={() => setPlayStatus(PlayStatuses.PLAYING)}
-                          component="span" >
-                <PlayCircleFilledIcon style={{fontSize: '12em'}} />
-              </IconButton>
-            )}
-          </Box>
-          <Box p={1}>
-            <IconButton onClick={() => setPlayingIndex(playingIndex + 1)}
-                        disabled={ playingIndex >= songNums.length - 1 }
-                        component="span" >
-              <SkipNextIcon style={{fontSize: '6em'}} />
-            </IconButton>
-          </Box>
-        </Box>
-        <Box display="flex" justifyContent="center">
-          <IconButton onClick={stop}
-                      component="span" >
-            <StopIcon style={{fontSize: '6em'}} />
-          </IconButton>
-        </Box>
+            </Box>
 
-        <PlayingAudio songInfo={playingSong} playEnded={playEnded} playingStatus={playStatus} />
+            <Box display="flex" justifyContent="center" alignItems="center"
+            >
+              <Box p={1}>
+                <IconButton onClick={() => setPlayingIndex(playingIndex - 1)}
+                            disabled={ playingIndex <= 0 }
+                            component="span" >
+                  <SkipPreviousIcon style={{fontSize: '6em'}} />
+                </IconButton>
+              </Box>
+              <Box p={1}>
+                {playStatus == PlayStatuses.PLAYING ? (
+                  <IconButton onClick={() => setPlayStatus(PlayStatuses.PAUSED)}
+                              component="span" >
+                    <PauseCircleFilledIcon style={{fontSize: '10em'}} />
+                  </IconButton>
+                ) : (
+                  <IconButton onClick={() => setPlayStatus(PlayStatuses.PLAYING)}
+                              component="span" >
+                    <PlayCircleFilledIcon style={{fontSize: '10em'}} />
+                  </IconButton>
+                )}
+              </Box>
+              <Box p={1}>
+                <IconButton onClick={() => setPlayingIndex(playingIndex + 1)}
+                            disabled={ playingIndex >= songNums.length - 1 }
+                            component="span" >
+                  <SkipNextIcon style={{fontSize: '6em'}} />
+                </IconButton>
+              </Box>
+            </Box>
+          </Box>
 
-        <Box display="flex" justifyContent="center"
-             className={classes.paperBottom}
-        >
-          <Box style={{width: '600px'}}>
-            <SongTypography position={TextPosition.LEFT}>
-              {playingSong.song[0]}
-            </SongTypography>
-            <SongTypography position={TextPosition.CENTER}>
-              {playingSong.song[1]}
-            </SongTypography>
-            <SongTypography position={TextPosition.RIGHT}>
-              {playingSong.song[2]}
-            </SongTypography>
-            <SongTypography position={TextPosition.LEFT}>
-              {playingSong.song[3]}
-            </SongTypography>
-            <SongTypography position={TextPosition.CENTER}>
-              {playingSong.song[4]}
-            </SongTypography>
+          <PlayingAudio songInfo={playingSong} playEnded={playEnded} playingStatus={playStatus} />
+
+          <Box display="flex" justifyContent="center"
+               className={classes.paperBottom}
+          >
+            <Box style={{width: '600px'}}>
+              <SongTypography position={TextPosition.LEFT}>
+                {playingSong.song[0]}
+              </SongTypography>
+              <SongTypography position={TextPosition.CENTER}>
+                {playingSong.song[1]}
+              </SongTypography>
+              <SongTypography position={TextPosition.RIGHT}>
+                {playingSong.song[2]}
+              </SongTypography>
+              <SongTypography position={TextPosition.LEFT}>
+                {playingSong.song[3]}
+              </SongTypography>
+              <SongTypography position={TextPosition.CENTER}>
+                {playingSong.song[4]}
+              </SongTypography>
+            </Box>
           </Box>
         </Box>
-      </div>
-      </Box>
     </Modal>
   );
 }
