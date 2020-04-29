@@ -39,7 +39,6 @@ export function AudioPlayer({songNums, callbackStop}: AudioPlayerProps) {
 
   const [playStatus, setPlayStatus] = useState<PlayStatuses>(PlayStatuses.PLAYING);
   const [playingIndex, setPlayingIndex] = useState<number>(0);
-  // const [playingSong, setPlayingSong]  = useState<SongInfo>(new SongInfo(songNums[playingIndex]));
 
   console.log('called AudioPlayer', songNums, playingIndex, songNums.length);
 
@@ -63,7 +62,7 @@ export function AudioPlayer({songNums, callbackStop}: AudioPlayerProps) {
   return (
     <Modal
       open={true}
-      onClose={callbackStop}
+      onClose={stop}
       aria-labelledby="simple-modal-title"
       aria-describedby="simple-modal-description"
       style={{backgroundColor: 'bkack'}}

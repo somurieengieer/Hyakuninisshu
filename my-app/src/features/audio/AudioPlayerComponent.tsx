@@ -42,9 +42,6 @@ export function AudioPlayerComponent() {
   useEffect(() => {
     console.log('changed playing')
   }, [playing]);
-  // useEffect(() => {
-  //   console.log('changed playSongs')
-  // }, [playSongs])
 
   return (
     <>
