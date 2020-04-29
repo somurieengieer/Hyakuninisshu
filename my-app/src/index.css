@@ -7,10 +7,19 @@ body {
   /*  sans-serif;*/
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: url("/image/back_image.jpg");
-  /*background-repeat: no-repeat;*/
-  background-attachment: fixed;
+}
+body::before {
+  background:url('/image/back_image.jpg') no-repeat left top;
   background-size: calc(max(100%, 1000px));
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding-bottom: 108px;
+  content: "";
+  z-index: -1;
 }
 
 code {
