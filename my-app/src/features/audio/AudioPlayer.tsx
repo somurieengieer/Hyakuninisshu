@@ -5,17 +5,14 @@ import PlayCircleFilledIcon from '@material-ui/icons/PlayCircleFilled';
 import PauseCircleFilledIcon from '@material-ui/icons/PauseCircleFilled';
 import SkipPreviousIcon from '@material-ui/icons/SkipPrevious';
 import SkipNextIcon from '@material-ui/icons/SkipNext';
-import {PlayingAudio, PlayStatuses} from "./AudioList";
-import {SongInfo} from "../song/Song";
+import {PlayingAudio, PlayStatuses} from "./PlayingAudio";
 import {SongTypography, TextPosition} from "./SongTypography";
 import CloseIcon from '@material-ui/icons/Close';
 import {theme} from "../../materialui/theme";
+import {SongInfo} from "../song/SongInfo";
 
 
 const useStyles = makeStyles({
-  root: {
-    minWidth: 275,
-  },
   paper: {
     backgroundImage: `url(${process.env.PUBLIC_URL}/image/washi.jpg)`,
   },
@@ -52,17 +49,6 @@ const useStyles = makeStyles({
       width: 560,
     }
   },
-  bullet: {
-    display: 'inline-block',
-    margin: '0 2px',
-    transform: 'scale(0.8)',
-  },
-  title: {
-    fontSize: 14,
-  },
-  pos: {
-    marginBottom: 12,
-  },
 });
 
 interface AudioPlayerProps {
@@ -77,13 +63,10 @@ export function AudioPlayer({songNums, callbackStop}: AudioPlayerProps) {
   const [playStatus, setPlayStatus] = useState<PlayStatuses>(PlayStatuses.PLAYING);
   const [playingIndex, setPlayingIndex] = useState<number>(0);
 
-  console.log('called AudioPlayer', songNums, playingIndex, songNums.length);
-
   const playingSong = new SongInfo(songNums[playingIndex]);
 
   const playEnded = () => {
     if (playingIndex < songNums.length - 1) {
-      // setPlayingSong(new SongInfo(songNums[playingIndex+1])) // TODO: 連続でやるとplayingIndexに反映されていない？
       setPlayingIndex(playingIndex+1);
     } else {
       setPlayingIndex(0);

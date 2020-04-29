@@ -1,6 +1,7 @@
 import React from 'react';
-import {Song, SongInfo} from "./Song";
+import {Song} from "./Song";
 import {List} from "@material-ui/core";
+import {SongInfo} from "./SongInfo";
 
 export function Songs() {
 
