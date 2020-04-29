@@ -15,6 +15,18 @@ const useStyles = makeStyles({
   root: {
     minWidth: 275,
   },
+  paper: {
+    backgroundImage: `url(${process.env.PUBLIC_URL}/image/washi.jpg)`,
+  },
+  paperTop: {
+    backgroundImage: `url(${process.env.PUBLIC_URL}/image/wagara_top.png)`,
+    backgroundRepeat: 'no-repeat',
+  },
+  paperBottom: {
+    backgroundImage: `url(${process.env.PUBLIC_URL}/image/wagara_bottom.png)`,
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition: 'bottom right 0px',
+  },
   bullet: {
     display: 'inline-block',
     margin: '0 2px',
@@ -65,12 +77,13 @@ export function AudioPlayer({songNums, callbackStop}: AudioPlayerProps) {
       onClose={stop}
       aria-labelledby="simple-modal-title"
       aria-describedby="simple-modal-description"
-      style={{backgroundColor: 'bkack'}}
     >
-      <Box m={1} p={1}
-           style={{backgroundColor: '#FFEDE2'}}
-      >
-        <Box display="flex" justifyContent="center" alignItems="center" >
+
+      <Box m={1} p={1} className={classes.paper}>
+        <div >
+        <Box display="flex" justifyContent="center" alignItems="center"
+             className={classes.paperTop}
+        >
           <Box p={1}>
             <IconButton onClick={() => setPlayingIndex(playingIndex - 1)}
                         disabled={ playingIndex <= 0 }
@@ -108,7 +121,9 @@ export function AudioPlayer({songNums, callbackStop}: AudioPlayerProps) {
 
         <PlayingAudio songInfo={playingSong} playEnded={playEnded} playingStatus={playStatus} />
 
-        <Box display="flex" justifyContent="center">
+        <Box display="flex" justifyContent="center"
+             className={classes.paperBottom}
+        >
           <Box style={{width: '600px'}}>
             <SongTypography position={TextPosition.LEFT}>
               {playingSong.song[0]}
@@ -127,6 +142,7 @@ export function AudioPlayer({songNums, callbackStop}: AudioPlayerProps) {
             </SongTypography>
           </Box>
         </Box>
+      </div>
       </Box>
     </Modal>
   );

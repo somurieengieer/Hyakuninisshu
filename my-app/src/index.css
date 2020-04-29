@@ -7,6 +7,10 @@ body {
   /*  sans-serif;*/
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: url("/image/back_image.jpg");
+  /*background-repeat: no-repeat;*/
+  background-attachment: fixed;
+  background-size: calc(max(100%, 1000px));
 }
 
 code {
