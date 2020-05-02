@@ -48,8 +48,7 @@ export function Song({songInfo}: SongProps) {
           edge="start"
           checked={checkStatus}
           tabIndex={-1}
-          disableRipple
-          inputProps={{ 'aria-labelledby': labelId }}
+          disableRipple // クリック時にさざ波エフェクト
         />
       </ListItemIcon>
       <ListItemText id={labelId+'number'} primary={songInfo.num}  />
