@@ -10,7 +10,7 @@ function App() {
     <div className="App">
       <div>
         <Typography variant='h3'>
-          百人一首読み上げ
+          百人一首はんなり読み上げ
         </Typography>
         <AudioPlayerComponent />
         <SongArchive />
