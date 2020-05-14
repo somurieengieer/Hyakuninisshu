@@ -6,7 +6,7 @@ import PauseCircleFilledIcon from '@material-ui/icons/PauseCircleFilled';
 import SkipPreviousIcon from '@material-ui/icons/SkipPrevious';
 import SkipNextIcon from '@material-ui/icons/SkipNext';
 import {PlayingAudio, PlayStatuses} from "./PlayingAudio";
-import {SongTypography, TextPosition} from "./SongTypography";
+import {SongTypography} from "./SongTypography";
 import CloseIcon from '@material-ui/icons/Close';
 import {theme} from "../../materialui/theme";
 import {SongInfo} from "../song/SongInfo";
@@ -133,21 +133,7 @@ export function AudioPlayer({songNums, callbackStop}: AudioPlayerProps) {
                className={classes.paperBottom}
           >
             <Box className={classes.songArea}>
-              <SongTypography position={TextPosition.LEFT}>
-                {playingSong.song[0]}
-              </SongTypography>
-              <SongTypography position={TextPosition.CENTER}>
-                {playingSong.song[1]}
-              </SongTypography>
-              <SongTypography position={TextPosition.RIGHT}>
-                {playingSong.song[2]}
-              </SongTypography>
-              <SongTypography position={TextPosition.LEFT}>
-                {playingSong.song[3]}
-              </SongTypography>
-              <SongTypography position={TextPosition.CENTER}>
-                {playingSong.song[4]}
-              </SongTypography>
+              <SongTypography song={playingSong}/>
             </Box>
           </Box>
         </Box>
