@@ -4,6 +4,7 @@ import {selectActiveNumbers} from "../song/songSlice";
 import {ExamMemorizePlayer} from "./ExamMemorizePlayer";
 import {SongInfo} from "../song/SongInfo";
 import {PlayButton} from "../player/PlayButton";
+import {SongTypography} from "../audio/SongTypography";
 
 
 // Fisher–Yates アルゴリズム
@@ -22,7 +23,14 @@ export function ExamMemorizeComponent() {
   const [playing, setPlaying] = useState<boolean>(false);
   const questions = shuffle(activeSongNums)
     .map(num => new SongInfo(num))
-    .map(info => ({question: info.kimariji, answer: info.song.join('\n'), explanation: info.singer}));
+    .map(info => ({
+      question: [info.kimariji],
+      answer: (<SongTypography song={info}/>), //info.song.join('\n'),
+      explanation: [`歌人: ${info.singer}`,
+        `上の句決まり字: ${info.kimariji}`,
+        `下の句決まり字: ${info.shimo_kimariji}`
+      ]
+    }));
 
   const stoppedPlay = () => {
     setPlaying(false)

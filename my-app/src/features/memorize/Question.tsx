@@ -15,9 +15,9 @@ const useStyles = makeStyles({
 });
 
 export interface QuestionItem {
-  question: string
-  answer: string
-  explanation: string
+  question: string[]
+  answer: JSX.Element
+  explanation: string[]
 }
 
 
@@ -40,18 +40,28 @@ export function Question({question, playEnded}: QuestionProps) {
     <>
       {!showAnswer ? (
         <>
-          <Typography variant='h3' gutterBottom>
-            {question.question}
-          </Typography>
+          {question.question.map(q => (
+            <Typography variant='h4' gutterBottom>
+              {q}
+            </Typography>
+          ))}
+          {/*<Typography variant='h3' gutterBottom>*/}
+          {/*  {question.question}*/}
+          {/*</Typography>*/}
         </>
       ) : (
         <>
-          <Typography variant='h3' gutterBottom>
+          <Typography variant='h4' gutterBottom>
             {question.answer}
           </Typography>
-          <Typography variant='h3' gutterBottom>
-            {question.explanation}
-          </Typography>
+          {question.explanation.map(exp => (
+            <Typography variant='h5' gutterBottom>
+              {exp}
+            </Typography>
+          ))}
+          {/*<Typography variant='h3' gutterBottom>*/}
+          {/*  {question.explanation}*/}
+          {/*</Typography>*/}
         </>
       )}
 
