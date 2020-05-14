@@ -1,9 +1,8 @@
 import React, {useState} from 'react';
-import {IconButton} from "@material-ui/core";
-import PlayCircleFilledIcon from '@material-ui/icons/PlayCircleFilled';
 import {AudioPlayer} from "./AudioPlayer";
 import {useSelector} from "react-redux";
 import {selectActiveNumbers} from "../song/songSlice";
+import {PlayButton} from "../player/PlayButton";
 
 
 // Fisher–Yates アルゴリズム
@@ -28,11 +27,10 @@ export function AudioPlayerComponent() {
 
   return (
     <>
-      <IconButton onClick={() => setPlaying(true)}
-                  component="span" >
-        <PlayCircleFilledIcon style={{fontSize: '12em'}} />
-      </IconButton>
-      { playing && (<AudioPlayer songNums={playSongs} callbackStop={stoppedPlay}/>)}
+      <PlayButton onClick={() => setPlaying(true)}>
+        歌の読み上げ
+      </PlayButton>
+      {playing && (<AudioPlayer songNums={playSongs} callbackStop={stoppedPlay}/>)}
     </>
   );
 }

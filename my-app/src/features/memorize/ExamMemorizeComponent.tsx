@@ -3,7 +3,7 @@ import {useSelector} from "react-redux";
 import {selectActiveNumbers} from "../song/songSlice";
 import {ExamMemorizePlayer} from "./ExamMemorizePlayer";
 import {SongInfo} from "../song/SongInfo";
-import {PlayButton} from "./PlayButton";
+import {PlayButton} from "../player/PlayButton";
 
 
 // Fisher–Yates アルゴリズム

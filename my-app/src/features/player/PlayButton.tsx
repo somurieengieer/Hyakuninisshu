@@ -1,11 +1,12 @@
 import React from 'react';
 import {makeStyles} from "@material-ui/core/styles";
-import {Button, IconButton, Typography} from "@material-ui/core";
+import {Button} from "@material-ui/core";
 import {theme} from "../../materialui/theme";
+import PlayCircleFilledIcon from '@material-ui/icons/PlayCircleFilled';
 
 
 const useStyles = makeStyles({
-  margin: {
+  button: {
     margin: theme.spacing(1),
   },
 });
@@ -20,13 +21,15 @@ export const PlayButton: React.FC<QuestionProps> =
     const classes = useStyles();
 
     return (
-      <IconButton onClick={onClick}
-                  component="span">
-        <Button variant="contained" size="medium" color="primary" className={classes.margin}>
-          <Typography variant='h3' gutterBottom>
-            {children}
-          </Typography>
-        </Button>
-      </IconButton>
+      <Button
+        variant="contained"
+        color="secondary"
+        className={classes.button}
+        startIcon={<PlayCircleFilledIcon/>}
+        onClick={onClick}
+        size="large"
+      >
+        {children}
+      </Button>
     )
   };
