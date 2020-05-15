@@ -20,7 +20,7 @@ const SongOneLine: React.FC<SongOneLineProps> =
       <Box display="flex" justifyContent={position}>
         <Box>
           {/*h3のレスポンシブフォントサイズ変更はtheme.tsxに記載*/}
-          <Typography variant='h3' gutterBottom>
+          <Typography variant='h4' gutterBottom>
             {children}
           </Typography>
         </Box>

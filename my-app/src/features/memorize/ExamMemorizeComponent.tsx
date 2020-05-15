@@ -25,11 +25,12 @@ export function ExamMemorizeComponent() {
     .map(num => new SongInfo(num))
     .map(info => ({
       question: [info.kimariji],
-      answer: (<SongTypography song={info}/>), //info.song.join('\n'),
+      answer: info.shimo_kimariji,
       explanation: [`歌人: ${info.singer}`,
         `上の句決まり字: ${info.kimariji}`,
         `下の句決まり字: ${info.shimo_kimariji}`
-      ]
+      ],
+      ext: (<SongTypography song={info}/>),
     }));
 
   const stoppedPlay = () => {

@@ -16,8 +16,9 @@ const useStyles = makeStyles({
 
 export interface QuestionItem {
   question: string[]
-  answer: JSX.Element
+  answer: string
   explanation: string[]
+  ext?: JSX.Element
 }
 
 
@@ -38,24 +39,22 @@ export function Question({question, playEnded}: QuestionProps) {
 
   return (
     <>
-      {!showAnswer ? (
-        <>
-          {question.question.map(q => (
-            <Typography variant='h4' gutterBottom>
-              {q}
-            </Typography>
-          ))}
-        </>
-      ) : (
+      {question.question.map(q => (
+        <Typography variant='h4' gutterBottom>
+          Q. {q}
+        </Typography>
+      ))}
+      {showAnswer && (
         <>
           <Typography variant='h4' gutterBottom>
-            {question.answer}
+            A. {question.answer}
           </Typography>
           {question.explanation.map(exp => (
             <Typography variant='h5' gutterBottom>
               {exp}
             </Typography>
           ))}
+          {question.ext}
         </>
       )}
 
@@ -63,16 +62,16 @@ export function Question({question, playEnded}: QuestionProps) {
       >
         {!showAnswer ? (
           <QuestionBottomButton onClick={() => setShowAnswer(true)}>
-            答えを見る
+            答え
           </QuestionBottomButton>
         ) : (
           <QuestionBottomButton onClick={() => setShowAnswer(false)}>
-            問題に戻る
+            答えを隠す
           </QuestionBottomButton>
 
         )}
         <QuestionBottomButton onClick={playEnded}>
-          次の問題へ
+          次へ
         </QuestionBottomButton>
       </Box>
     </>

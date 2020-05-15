@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {makeStyles} from "@material-ui/core/styles";
-import {Box, IconButton, Modal} from "@material-ui/core";
+import {Box, IconButton, Modal, Typography} from "@material-ui/core";
 import CloseIcon from '@material-ui/icons/Close';
 import {theme} from "../../materialui/theme";
 import {Question, QuestionItem} from "./Question";
@@ -93,6 +93,11 @@ export function ExamMemorizePlayer({questions, callbackStop}: AudioPlayerProps) 
                         component="span">
               <CloseIcon style={{fontSize: '3em'}}/>
             </IconButton>
+          </Box>
+          <Box display="flex" justifyContent="center">
+            <Typography variant="h6">
+              {playingIndex + 1} / {questions.length}
+            </Typography>
           </Box>
         </Box>
 
