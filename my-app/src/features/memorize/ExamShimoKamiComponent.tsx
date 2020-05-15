@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {useSelector} from "react-redux";
 import {selectActiveNumbers} from "../song/songSlice";
-import {ExamMemorizePlayer} from "./ExamMemorizePlayer";
+import {ExamPlayer} from "./ExamPlayer";
 import {SongInfo} from "../song/SongInfo";
 import {PlayButton} from "../player/PlayButton";
 import {SongTypography} from "../audio/SongTypography";
@@ -17,15 +17,15 @@ function shuffle([...arr]) {
   return arr;
 }
 
-export function ExamMemorizeComponent() {
+export function ExamShimoKamiComponent() {
 
   const activeSongNums = useSelector(selectActiveNumbers);
   const [playing, setPlaying] = useState<boolean>(false);
   const questions = shuffle(activeSongNums)
     .map(num => new SongInfo(num))
     .map(info => ({
-      question: [info.kimariji],
-      answer: info.shimo_kimariji,
+      question: [info.shimo_kimariji],
+      answer: info.kimariji,
       explanation: [`歌人: ${info.singer}`,
         `上の句決まり字: ${info.kimariji}`,
         `下の句決まり字: ${info.shimo_kimariji}`
@@ -40,9 +40,9 @@ export function ExamMemorizeComponent() {
   return (
     <>
       <PlayButton onClick={() => setPlaying(true)}>
-        上の句決まり字の暗記テスト
+        下の句決まり字の暗記テスト
       </PlayButton>
-      {playing && (<ExamMemorizePlayer questions={questions} callbackStop={stoppedPlay}/>)}
+      {playing && (<ExamPlayer questions={questions} callbackStop={stoppedPlay}/>)}
     </>
   );
 }

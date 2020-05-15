@@ -4,9 +4,10 @@ import {Songs} from "./features/song/Songs";
 import {SongArchive} from "./features/songArchive/SongArchive";
 import {AudioPlayerComponent} from "./features/audio/AudioPlayerComponent";
 import {Typography} from "@material-ui/core";
-import {ExamMemorizeComponent} from "./features/memorize/ExamMemorizeComponent";
+import {ExamKamiShimoComponent} from "./features/memorize/ExamKamiShimoComponent";
 import {makeStyles} from "@material-ui/core/styles";
 import {theme} from "./materialui/theme";
+import {ExamShimoKamiComponent} from "./features/memorize/ExamShimoKamiComponent";
 
 const useStyles = makeStyles({
   margin: {
@@ -26,7 +27,8 @@ function App() {
 
         <div className={classes.margin}>
           <AudioPlayerComponent/>
-          <ExamMemorizeComponent/>
+          <ExamKamiShimoComponent/>
+          <ExamShimoKamiComponent/>
         </div>
 
         <div className={classes.margin}>

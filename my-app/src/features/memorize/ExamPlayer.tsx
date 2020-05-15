@@ -57,7 +57,7 @@ export enum PlayStatuses {
 }
 
 // 序歌も含めて流す連番を引数とする
-export function ExamMemorizePlayer({questions, callbackStop}: AudioPlayerProps) {
+export function ExamPlayer({questions, callbackStop}: AudioPlayerProps) {
   const classes = useStyles();
 
   const [playStatus, setPlayStatus] = useState<PlayStatuses>(PlayStatuses.PLAYING);
