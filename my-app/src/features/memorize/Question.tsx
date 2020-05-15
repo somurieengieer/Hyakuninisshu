@@ -45,9 +45,6 @@ export function Question({question, playEnded}: QuestionProps) {
               {q}
             </Typography>
           ))}
-          {/*<Typography variant='h3' gutterBottom>*/}
-          {/*  {question.question}*/}
-          {/*</Typography>*/}
         </>
       ) : (
         <>
@@ -59,9 +56,6 @@ export function Question({question, playEnded}: QuestionProps) {
               {exp}
             </Typography>
           ))}
-          {/*<Typography variant='h3' gutterBottom>*/}
-          {/*  {question.explanation}*/}
-          {/*</Typography>*/}
         </>
       )}
 
@@ -81,14 +75,6 @@ export function Question({question, playEnded}: QuestionProps) {
           次の問題へ
         </QuestionBottomButton>
       </Box>
-      {/*<IconButton onClick={playEnded}*/}
-      {/*            component="span" >*/}
-      {/*  <Button variant="contained" size="medium" color="primary" className={classes.margin}>*/}
-      {/*    <Typography variant='h3' gutterBottom>*/}
-      {/*      次の問題へ*/}
-      {/*    </Typography>*/}
-      {/*  </Button>*/}
-      {/*</IconButton>*/}
     </>
   )
 }

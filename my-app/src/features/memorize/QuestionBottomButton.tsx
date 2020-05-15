@@ -1,6 +1,6 @@
 import React from 'react';
 import {makeStyles} from "@material-ui/core/styles";
-import {Button, IconButton, Typography} from "@material-ui/core";
+import {Button, Typography} from "@material-ui/core";
 import {theme} from "../../materialui/theme";
 
 
@@ -20,13 +20,10 @@ export const QuestionBottomButton: React.FC<QuestionProps> =
     const classes = useStyles();
 
     return (
-      <IconButton onClick={onClick}
-                  component="span">
-        <Button variant="contained" size="medium" color="primary" className={classes.margin}>
-          <Typography variant='h3' gutterBottom>
-            {children}
-          </Typography>
-        </Button>
-      </IconButton>
+      <Button variant="contained" onClick={onClick} size="medium" color="primary" className={classes.margin}>
+        <Typography variant='h4' gutterBottom>
+          {children}
+        </Typography>
+      </Button>
     )
   };

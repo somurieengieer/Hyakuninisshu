@@ -29,24 +29,32 @@ export function SongArchive() {
   }, [activeArchive]);
 
   return (
-    <div>
-      {songArchives.map(({title, songs})=> (
-        <Button key={title} onClick={() => changeArchive(title)}>
-          <Card className={
-            classNames(
-              classes.root,
-              {[classes.active]: activeArchive.title == title}
-            )
-          }>
-          <CardContent>
-            <Typography variant="h5" component="h2">
-              {title}
-            </Typography>
-          </CardContent>
-        </Card>
-        </Button>
-      ))}
-    </div>
+    <>
+      <Typography variant="h5">
+        曲集を以下から選択してください。
+      </Typography>
+      <Typography variant="h5">
+        チェックされた曲をランダムで読み上げ・テストします。
+      </Typography>
+      <div>
+        {songArchives.map(({title, songs}) => (
+          <Button key={title} onClick={() => changeArchive(title)}>
+            <Card className={
+              classNames(
+                classes.root,
+                {[classes.active]: activeArchive.title == title}
+              )
+            }>
+              <CardContent>
+                <Typography variant="h5" component="h2">
+                  {title}
+                </Typography>
+              </CardContent>
+            </Card>
+          </Button>
+        ))}
+      </div>
+    </>
   );
 }
 
