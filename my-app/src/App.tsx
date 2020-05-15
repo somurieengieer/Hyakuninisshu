@@ -20,7 +20,7 @@ function App() {
   return (
     <div className="App">
       <div>
-        <Typography variant='h3'>
+        <Typography variant='h3' className={classes.margin}>
           百人一首はんなり読み上げ
         </Typography>
 

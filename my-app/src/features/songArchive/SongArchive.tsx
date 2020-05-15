@@ -8,7 +8,7 @@ import classNames from "classnames";
 
 const useStyles = makeStyles({
   root: {
-    minWidth: 275,
+    minWidth: 250,
   },
   active: {
     backgroundColor: '#F0D0A0',
@@ -46,7 +46,7 @@ export function SongArchive() {
               )
             }>
               <CardContent>
-                <Typography variant="h5" component="h2">
+                <Typography variant="h6">
                   {title}
                 </Typography>
               </CardContent>
