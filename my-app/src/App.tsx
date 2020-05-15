@@ -3,11 +3,11 @@ import './App.css';
 import {Songs} from "./features/song/Songs";
 import {SongArchive} from "./features/songArchive/SongArchive";
 import {AudioPlayerComponent} from "./features/audio/AudioPlayerComponent";
-import {Typography} from "@material-ui/core";
 import {ExamKamiShimoComponent} from "./features/memorize/ExamKamiShimoComponent";
 import {makeStyles} from "@material-ui/core/styles";
 import {theme} from "./materialui/theme";
 import {ExamShimoKamiComponent} from "./features/memorize/ExamShimoKamiComponent";
+import {TopMenu} from "./layout/TopMenu";
 
 const useStyles = makeStyles({
   margin: {
@@ -21,9 +21,7 @@ function App() {
   return (
     <div className="App">
       <div>
-        <Typography variant='h3' className={classes.margin}>
-          百人一首はんなり読み上げ
-        </Typography>
+        <TopMenu/>
 
         <div className={classes.margin}>
           <AudioPlayerComponent/>
