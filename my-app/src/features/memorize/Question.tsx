@@ -1,17 +1,9 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {makeStyles} from "@material-ui/core/styles";
-import {Box, Typography} from "@material-ui/core";
-import {theme} from "../../materialui/theme";
-import {QuestionBottomButton} from "./QuestionBottomButton";
+import {Typography} from "@material-ui/core";
 
 
 const useStyles = makeStyles({
-  paper: {
-    backgroundImage: `url(${process.env.PUBLIC_URL}/image/washi.jpg)`,
-  },
-  margin: {
-    margin: theme.spacing(1),
-  },
 });
 
 export interface QuestionItem {
@@ -21,21 +13,16 @@ export interface QuestionItem {
   ext?: JSX.Element
 }
 
-
 export interface QuestionProps {
   question: QuestionItem
+  showAnswer: boolean
   playEnded: () => void
 }
 
 // 序歌も含めて流す連番を引数とする
-export function Question({question, playEnded}: QuestionProps) {
+export function Question({question, showAnswer, playEnded}: QuestionProps) {
+
   const classes = useStyles();
-
-  const [showAnswer, setShowAnswer] = useState<boolean>(false);
-
-  useEffect(() => {
-    setShowAnswer(false)
-  }, [question]);
 
   return (
     <>
@@ -57,23 +44,6 @@ export function Question({question, playEnded}: QuestionProps) {
           {question.ext}
         </>
       )}
-
-      <Box display="flex" justifyContent="center"
-      >
-        {!showAnswer ? (
-          <QuestionBottomButton onClick={() => setShowAnswer(true)}>
-            答え
-          </QuestionBottomButton>
-        ) : (
-          <QuestionBottomButton onClick={() => setShowAnswer(false)}>
-            答えを隠す
-          </QuestionBottomButton>
-
-        )}
-        <QuestionBottomButton onClick={playEnded}>
-          次へ
-        </QuestionBottomButton>
-      </Box>
     </>
   )
 }

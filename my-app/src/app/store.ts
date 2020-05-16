@@ -1,5 +1,6 @@
 import {Action, configureStore, ThunkAction} from '@reduxjs/toolkit';
 import songReducer from '../features/song/songSlice'
+import playingSongReducer from '../features/song/playingSongSlice'
 import songArchiveReducer from '../features/songArchive/songArchiveSlice'
 import {createLogger} from "redux-logger";
 
@@ -11,6 +12,7 @@ const logger = createLogger({
 export const store = configureStore({
   reducer: {
     song: songReducer,
+    playingSong: playingSongReducer,
     songArchive: songArchiveReducer,
   },
   middleware: [

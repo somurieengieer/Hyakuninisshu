@@ -51,12 +51,13 @@ const useStyles = makeStyles({
 
 interface ModalPlayerProps {
   callbackStop: () => void
+  headerJSX?: JSX.Element // TODO: ReactNodeでも良さそう。どっちが良い？？
   footerJSX?: JSX.Element
 }
 
 // 序歌も含めて流す連番を引数とする
 export const ModalPlayer: React.FC<ModalPlayerProps> =
-  ({callbackStop, footerJSX, children}) => {
+  ({callbackStop, headerJSX, footerJSX, children}) => {
 
     const classes = useStyles();
 
@@ -80,6 +81,9 @@ export const ModalPlayer: React.FC<ModalPlayerProps> =
                 <CloseIcon style={{fontSize: '3em'}}/>
               </IconButton>
             </Box>
+            <div>
+              {headerJSX}
+            </div>
           </Box>
 
           <Box className={classes.layout_main}>

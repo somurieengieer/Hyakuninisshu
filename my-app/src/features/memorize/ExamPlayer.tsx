@@ -1,8 +1,13 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {makeStyles} from "@material-ui/core/styles";
-import {Box, Typography} from "@material-ui/core";
+import {Box} from "@material-ui/core";
 import {theme} from "../../materialui/theme";
 import {Question, QuestionItem} from "./Question";
+import {nextSong, resetSong, selectPlayingNumber} from "../song/playingSongSlice";
+import {useDispatch, useSelector} from "react-redux";
+import {ModalPlayer} from "../player/ModalPlayer";
+import {QuestionHeader} from "./QuestionHeader";
+import {QuestionFooter} from "./QuestionFooter";
 
 
 const useStyles = makeStyles({
@@ -58,41 +63,53 @@ export enum PlayStatuses {
 // 序歌も含めて流す連番を引数とする
 export function ExamPlayer({questions, callbackStop}: AudioPlayerProps) {
   const classes = useStyles();
+  const dispatch = useDispatch();
 
-  const [playStatus, setPlayStatus] = useState<PlayStatuses>(PlayStatuses.PLAYING);
-  const [playingIndex, setPlayingIndex] = useState<number>(0);
+  const playingIndex = useSelector(selectPlayingNumber);
+  const [showAnswer, setShowAnswer] = useState<boolean>(false);
 
   const playingQuestion = questions[playingIndex];
 
-  const playEnded = () => {
+  useEffect(() => {
+    setShowAnswer(false)
+  }, [playingIndex]);
+
+  const playNext = () => {
     if (playingIndex < questions.length - 1) {
-      setPlayingIndex(playingIndex + 1);
+      dispatch(nextSong())
     } else {
-      setPlayingIndex(0);
-      setPlayStatus(PlayStatuses.STOPPED)
+      dispatch(resetSong())
     }
   };
 
   const stop = () => {
-    setPlayStatus(PlayStatuses.STOPPED);
     callbackStop()
   };
 
   return (
     <>
-      <Box display="flex" justifyContent="center">
-        <Typography variant="h6">
-          {playingIndex + 1} / {questions.length}
-        </Typography>
-      </Box>
-
-      <Box display="flex" justifyContent="center"
-           className={classes.paperBottom}
+      <ModalPlayer callbackStop={stop}
+                   headerJSX={(
+                     <QuestionHeader>
+                       {playingIndex + 1} / {questions.length}
+                     </QuestionHeader>
+                   )}
+                   footerJSX={(
+                     <QuestionFooter showAnswer={showAnswer}
+                                     setShowAnswer={setShowAnswer}
+                                     playNext={playNext}
+                     />
+                   )}
       >
-        <Box className={classes.songArea}>
-          <Question question={playingQuestion} playEnded={playEnded}/>
+
+        <Box display="flex" justifyContent="center"
+             className={classes.paperBottom}
+        >
+          <Box className={classes.songArea}>
+            <Question question={playingQuestion} showAnswer={showAnswer} playEnded={playNext}/>
+          </Box>
         </Box>
-      </Box>
+      </ModalPlayer>
     </>
   );
 }
