@@ -2,12 +2,10 @@ import React from 'react';
 import './App.css';
 import {Songs} from "./features/song/Songs";
 import {SongArchive} from "./features/songArchive/SongArchive";
-import {AudioPlayerComponent} from "./features/audio/AudioPlayerComponent";
-import {ExamKamiShimoComponent} from "./features/memorize/ExamKamiShimoComponent";
 import {makeStyles} from "@material-ui/core/styles";
 import {theme} from "./materialui/theme";
-import {ExamShimoKamiComponent} from "./features/memorize/ExamShimoKamiComponent";
 import {TopMenu} from "./layout/TopMenu";
+import {PlayersComponent} from "./layout/PlayersComponent";
 
 const useStyles = makeStyles({
   margin: {
@@ -23,11 +21,12 @@ function App() {
       <div>
         <TopMenu/>
 
-        <div className={classes.margin}>
-          <AudioPlayerComponent/>
-          <ExamKamiShimoComponent/>
-          <ExamShimoKamiComponent/>
-        </div>
+        <PlayersComponent/>
+        {/*<div className={classes.margin}>*/}
+        {/*  <AudioPlayerComponent/>*/}
+        {/*  <ExamKamiShimoComponent/>*/}
+        {/*  <ExamShimoKamiComponent/>*/}
+        {/*</div>*/}
 
         <div className={classes.margin}>
           <SongArchive/>
