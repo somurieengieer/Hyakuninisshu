@@ -19,7 +19,6 @@ export function AudioPlayerComponent() {
   return (
     <>
       <PlayButton onClick={() => setPlaying(true)}>
-        歌の読み上げ
       </PlayButton>
       {playing && (
         <AudioPlayer songNums={playSongs} callbackStop={stoppedPlay}/>

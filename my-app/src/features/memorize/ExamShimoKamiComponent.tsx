@@ -31,7 +31,6 @@ export function ExamShimoKamiComponent() {
   return (
     <>
       <PlayButton onClick={() => setPlaying(true)}>
-        下の句決まり字の暗記テスト
       </PlayButton>
       {playing && (
         <ExamPlayer questions={questions} callbackStop={stoppedPlay}/>
