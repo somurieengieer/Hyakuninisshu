@@ -1,15 +1,14 @@
 import React, {useEffect, useState} from 'react';
 import {makeStyles} from "@material-ui/core/styles";
-import {Question, QuestionItem} from "./Question";
+import {Question, QuestionItem} from "./question/Question";
 import {nextSong, previousSong, resetSong, selectPlayingNumber} from "../song/playingSongSlice";
 import {useDispatch, useSelector} from "react-redux";
 import {ModalPlayer} from "../player/ModalPlayer";
-import {QuestionHeader} from "./QuestionHeader";
-import {QuestionFooter} from "./QuestionFooter";
+import {QuestionHeader} from "./question/QuestionHeader";
+import {QuestionFooter} from "./question/QuestionFooter";
 
 
-const useStyles = makeStyles({
-});
+const useStyles = makeStyles({});
 
 interface AudioPlayerProps {
   questions: QuestionItem[]

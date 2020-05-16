@@ -30,8 +30,6 @@ export function ExamKamiShimoComponent() {
         info.song.slice(3, 5).join('　'),
         '　',
         `歌人: ${info.singer}`,
-        // `上の句決まり字: ${info.kimariji_kami}`,
-        // `下の句決まり字: ${info.kimariji_shimo}`
       ],
     }));
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import {makeStyles} from "@material-ui/core/styles";
 import {Button, Typography} from "@material-ui/core";
-import {theme} from "../../materialui/theme";
+import {theme} from "../../../materialui/theme";
 
 
 const useStyles = makeStyles({

@@ -12,7 +12,7 @@ import {SongInfo} from "../song/SongInfo";
 import {useDispatch, useSelector} from "react-redux";
 import {nextSong, previousSong, resetSong, selectPlayingNumber} from "../song/playingSongSlice";
 import {ModalPlayer} from "../player/ModalPlayer";
-import {QuestionHeader} from "../memorize/QuestionHeader";
+import {QuestionHeader} from "../memorize/question/QuestionHeader";
 
 
 const useStyles = makeStyles({
