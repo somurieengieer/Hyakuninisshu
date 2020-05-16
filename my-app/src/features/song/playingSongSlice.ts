@@ -17,7 +17,6 @@ export const playingSongSlice = createSlice({
       state.playingNumber = 0
     },
     nextSong: (state, action: PayloadAction) => {
-      console.log('called nextSong?');
       state.playingNumber += 1
     },
     previousSong: (state, action: PayloadAction) => {

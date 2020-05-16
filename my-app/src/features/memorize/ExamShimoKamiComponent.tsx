@@ -4,7 +4,6 @@ import {selectActiveNumbers} from "../song/songSlice";
 import {ExamPlayer} from "./ExamPlayer";
 import {SongInfo} from "../song/SongInfo";
 import {PlayButton} from "../player/PlayButton";
-import {SongTypography} from "../audio/SongTypography";
 
 
 // Fisher–Yates アルゴリズム
@@ -24,13 +23,14 @@ export function ExamShimoKamiComponent() {
   const questions = shuffle(activeSongNums)
     .map(num => new SongInfo(num))
     .map(info => ({
-      question: [info.shimo_kimariji],
-      answer: info.kimariji,
-      explanation: [`歌人: ${info.singer}`,
-        `上の句決まり字: ${info.kimariji}`,
-        `下の句決まり字: ${info.shimo_kimariji}`
+      question: [`下の句: ${info.shimo_kimariji}`],
+      answer: `上の句: ${info.kimariji}`,
+      explanation: [
+        info.song.slice(0, 3).join('　'),
+        info.song.slice(3, 5).join('　'),
+        '　',
+        `歌人: ${info.singer}`,
       ],
-      ext: (<SongTypography song={info}/>),
     }));
 
   const stoppedPlay = () => {
