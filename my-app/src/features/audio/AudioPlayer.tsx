@@ -72,6 +72,7 @@ export function AudioPlayer({songNums, callbackStop}: AudioPlayerProps) {
 
   const stop = () => {
     setPlayStatus(PlayStatuses.STOPPED);
+    dispatch(resetSong());
     callbackStop()
   };
 

@@ -24,7 +24,7 @@ export function TopMenu() {
           {/*  <MenuIcon />*/}
           {/*</IconButton>*/}
           <Typography variant="h6" className={classes.title}>
-            百人一首はんなり読み上げ
+            はんなり百人一首
           </Typography>
           {/*<Button color="inherit">Login</Button>*/}
         </Toolbar>
