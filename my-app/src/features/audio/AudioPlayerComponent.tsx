@@ -3,17 +3,8 @@ import {AudioPlayer} from "./AudioPlayer";
 import {useSelector} from "react-redux";
 import {selectActiveNumbers} from "../song/songSlice";
 import {PlayButton} from "../player/PlayButton";
+import {shuffle} from "../../utils/Utils";
 
-
-// Fisher–Yates アルゴリズム
-function shuffle([...arr]) {
-  let m = arr.length;
-  while (m) {
-    const i = Math.floor(Math.random() * m--);
-    [arr[m], arr[i]] = [arr[i], arr[m]];
-  }
-  return arr;
-}
 
 export function AudioPlayerComponent() {
 

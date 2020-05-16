@@ -37,7 +37,7 @@ export function SongArchive() {
         チェックされた曲をランダムで読み上げ・テストします。
       </Typography>
       <div>
-        {songArchives.map(({title, songs}) => (
+        {songArchives.map(({title}) => (
           <Button key={title} onClick={() => changeArchive(title)}>
             <Card className={
               classNames(

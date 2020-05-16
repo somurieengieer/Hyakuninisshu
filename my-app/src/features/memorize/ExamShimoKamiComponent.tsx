@@ -4,17 +4,8 @@ import {selectActiveNumbers} from "../song/songSlice";
 import {ExamPlayer} from "./ExamPlayer";
 import {SongInfo} from "../song/SongInfo";
 import {PlayButton} from "../player/PlayButton";
+import {shuffle} from "../../utils/Utils";
 
-
-// Fisher–Yates アルゴリズム
-function shuffle([...arr]) {
-  let m = arr.length;
-  while (m) {
-    const i = Math.floor(Math.random() * m--);
-    [arr[m], arr[i]] = [arr[i], arr[m]];
-  }
-  return arr;
-}
 
 export function ExamShimoKamiComponent() {
 

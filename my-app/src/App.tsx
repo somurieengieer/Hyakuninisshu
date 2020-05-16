@@ -22,11 +22,6 @@ function App() {
         <TopMenu/>
 
         <PlayersComponent/>
-        {/*<div className={classes.margin}>*/}
-        {/*  <AudioPlayerComponent/>*/}
-        {/*  <ExamKamiShimoComponent/>*/}
-        {/*  <ExamShimoKamiComponent/>*/}
-        {/*</div>*/}
 
         <div className={classes.margin}>
           <SongArchive/>
