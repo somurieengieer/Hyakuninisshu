@@ -5,7 +5,6 @@ import {ExamPlayer} from "./ExamPlayer";
 import {SongInfo} from "../song/SongInfo";
 import {PlayButton} from "../player/PlayButton";
 import {SongTypography} from "../audio/SongTypography";
-import {ModalPlayer} from "../player/ModalPlayer";
 
 
 // Fisher–Yates アルゴリズム
@@ -44,9 +43,7 @@ export function ExamShimoKamiComponent() {
         下の句決まり字の暗記テスト
       </PlayButton>
       {playing && (
-        <ModalPlayer callbackStop={stoppedPlay}>
-          <ExamPlayer questions={questions} callbackStop={stoppedPlay}/>
-        </ModalPlayer>
+        <ExamPlayer questions={questions} callbackStop={stoppedPlay}/>
       )}
     </>
   );

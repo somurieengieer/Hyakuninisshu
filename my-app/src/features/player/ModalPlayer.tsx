@@ -20,6 +20,14 @@ const useStyles = makeStyles({
     backgroundRepeat: 'no-repeat',
     minHeight: '150px' //背景画像の枠を確保するため
   },
+  paperMain: {
+    [theme.breakpoints.down('xs')]: {
+      width: 400
+    },
+    [theme.breakpoints.up('sm')]: {
+      width: 560,
+    },
+  },
   paperBottom: {
     backgroundImage: `url(${process.env.PUBLIC_URL}/image/wagara_bottom.png)`,
     backgroundRepeat: 'no-repeat',
@@ -29,7 +37,7 @@ const useStyles = makeStyles({
   },
 
   // フッターを固定化するためのレイアウト
-  layout_body: {
+  layoutBody: {
     display: 'flex',
     flexFlow: 'column',
     height: '100%'
@@ -37,14 +45,14 @@ const useStyles = makeStyles({
   layout_header: {
     // height: '40px', // 背景画像などに合わせて設定
   },
-  layout_main: {
+  layoutMain: {
     flex: 1,
 
     // モーダルのサイズが変更しないようmain内のサイズが大きくなりすぎない制御
     maxHeight: 'calc(100vh - 150px*2)',
     overflow: 'scroll',
   },
-  layout_footer: {
+  layoutFooter: {
     // height: '40px', // 背景画像などに合わせて設定
   },
 });
@@ -73,7 +81,7 @@ export const ModalPlayer: React.FC<ModalPlayerProps> =
         aria-describedby="simple-modal-description"
         className={[classes.modal,].join(' ')}
       >
-        <Box m={1} p={1} className={[classes.paper, classes.layout_body].join(' ')}>
+        <Box m={1} p={1} className={[classes.paper, classes.layoutBody].join(' ')}>
           <Box className={classes.paperTop}>
             <Box display="flex" justifyContent="flex-end" p={1}>
               <IconButton onClick={stop}
@@ -86,12 +94,14 @@ export const ModalPlayer: React.FC<ModalPlayerProps> =
             </div>
           </Box>
 
-          <Box className={classes.layout_main}>
-            {children}
+          <Box display="flex" justifyContent="center" className={classes.layoutMain}>
+            <Box className={[classes.paperMain].join(' ')}>
+              {children}
+            </Box>
           </Box>
 
           <Box display="flex" justifyContent="center"
-               className={[classes.paperBottom, classes.layout_footer].join(' ')}
+               className={[classes.paperBottom, classes.layoutFooter].join(' ')}
           >
             {footerJSX}
           </Box>

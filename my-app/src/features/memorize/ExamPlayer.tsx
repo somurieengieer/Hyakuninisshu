@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import {makeStyles} from "@material-ui/core/styles";
-import {Box} from "@material-ui/core";
 import {theme} from "../../materialui/theme";
 import {Question, QuestionItem} from "./Question";
 import {nextSong, resetSong, selectPlayingNumber} from "../song/playingSongSlice";
@@ -54,12 +53,6 @@ interface AudioPlayerProps {
   callbackStop: () => void
 }
 
-export enum PlayStatuses {
-  PLAYING = 'PLAYING',
-  STOPPED = 'STOPPED',
-  PAUSED = 'PAUSED'
-}
-
 // 序歌も含めて流す連番を引数とする
 export function ExamPlayer({questions, callbackStop}: AudioPlayerProps) {
   const classes = useStyles();
@@ -102,13 +95,13 @@ export function ExamPlayer({questions, callbackStop}: AudioPlayerProps) {
                    )}
       >
 
-        <Box display="flex" justifyContent="center"
-             className={classes.paperBottom}
-        >
-          <Box className={classes.songArea}>
-            <Question question={playingQuestion} showAnswer={showAnswer} playEnded={playNext}/>
-          </Box>
-        </Box>
+        {/*<Box display="flex" justifyContent="center"*/}
+        {/*     className={classes.paperBottom}*/}
+        {/*>*/}
+        {/*  <Box className={classes.songArea}>*/}
+        <Question question={playingQuestion} showAnswer={showAnswer} playEnded={playNext}/>
+        {/*</Box>*/}
+        {/*</Box>*/}
       </ModalPlayer>
     </>
   );
