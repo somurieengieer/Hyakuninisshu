@@ -4,8 +4,8 @@ export class SongInfo {
   public num: number;
   public song: string[];
   public singer: string;
-  public kimariji: string;
-  public shimo_kimariji: string;
+  public kimariji_kami: string;
+  public kimariji_shimo: string;
   public path: string;
 
   public constructor(songNumber: number) {
@@ -16,9 +16,9 @@ export class SongInfo {
     // @ts-ignore
     this.singer = songTmp.singer;
     // @ts-ignore
-    this.kimariji = songTmp.kimariji;
+    this.kimariji_kami = songTmp.kimariji;
     // @ts-ignore
-    this.shimo_kimariji = songTmp.shimo_kimariji;
+    this.kimariji_shimo = songTmp.shimo_kimariji;
     const numStr = ('000' + songNumber).slice(-3);
     this.path = `${process.env.PUBLIC_URL}/songs/${numStr}番.m4a`;
   }

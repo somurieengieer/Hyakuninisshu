@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {makeStyles} from "@material-ui/core/styles";
 import {Question, QuestionItem} from "./Question";
-import {nextSong, resetSong, selectPlayingNumber} from "../song/playingSongSlice";
+import {nextSong, previousSong, resetSong, selectPlayingNumber} from "../song/playingSongSlice";
 import {useDispatch, useSelector} from "react-redux";
 import {ModalPlayer} from "../player/ModalPlayer";
 import {QuestionHeader} from "./QuestionHeader";
@@ -31,14 +31,15 @@ export function ExamPlayer({questions, callbackStop}: AudioPlayerProps) {
   }, [playingIndex]);
 
   const playNext = () => {
-    if (playingIndex < questions.length - 1) {
-      dispatch(nextSong())
-    } else {
-      dispatch(resetSong())
-    }
+    dispatch(nextSong())
+  };
+
+  const playPrevious = () => {
+    dispatch(previousSong())
   };
 
   const stop = () => {
+    dispatch(resetSong());
     callbackStop()
   };
 
@@ -52,6 +53,7 @@ export function ExamPlayer({questions, callbackStop}: AudioPlayerProps) {
                  footerJSX={(
                    <QuestionFooter showAnswer={showAnswer}
                                    setShowAnswer={setShowAnswer}
+                                   playPrevious={playPrevious}
                                    playNext={playNext}
                    />
                  )}

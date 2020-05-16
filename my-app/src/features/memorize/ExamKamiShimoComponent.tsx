@@ -23,15 +23,15 @@ export function ExamKamiShimoComponent() {
   const questions = shuffle(activeSongNums)
     .map(num => new SongInfo(num))
     .map(info => ({
-      question: [`上の句: ${info.kimariji}`],
-      answer: `下の句: ${info.shimo_kimariji}`,
+      question: [`上の句: ${info.kimariji_kami}`],
+      answer: `下の句: ${info.kimariji_shimo}`,
       explanation: [
         info.song.slice(0, 3).join('　'),
         info.song.slice(3, 5).join('　'),
         '　',
         `歌人: ${info.singer}`,
-        // `上の句決まり字: ${info.kimariji}`,
-        // `下の句決まり字: ${info.shimo_kimariji}`
+        // `上の句決まり字: ${info.kimariji_kami}`,
+        // `下の句決まり字: ${info.kimariji_shimo}`
       ],
     }));
 
