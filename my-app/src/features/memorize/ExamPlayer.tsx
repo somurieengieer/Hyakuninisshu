@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import {makeStyles} from "@material-ui/core/styles";
-import {Box, IconButton, Modal, Typography} from "@material-ui/core";
-import CloseIcon from '@material-ui/icons/Close';
+import {Box, Typography} from "@material-ui/core";
 import {theme} from "../../materialui/theme";
 import {Question, QuestionItem} from "./Question";
 
@@ -80,35 +79,20 @@ export function ExamPlayer({questions, callbackStop}: AudioPlayerProps) {
   };
 
   return (
-    <Modal
-      open={true}
-      onClose={stop}
-      aria-labelledby="simple-modal-title"
-      aria-describedby="simple-modal-description"
-    >
-      <Box m={1} p={1} className={classes.paper}>
-        <Box className={classes.paperTop}>
-          <Box display="flex" justifyContent="flex-end" p={1}>
-            <IconButton onClick={stop}
-                        component="span">
-              <CloseIcon style={{fontSize: '3em'}}/>
-            </IconButton>
-          </Box>
-          <Box display="flex" justifyContent="center">
-            <Typography variant="h6">
-              {playingIndex + 1} / {questions.length}
-            </Typography>
-          </Box>
-        </Box>
+    <>
+      <Box display="flex" justifyContent="center">
+        <Typography variant="h6">
+          {playingIndex + 1} / {questions.length}
+        </Typography>
+      </Box>
 
-        <Box display="flex" justifyContent="center"
-             className={classes.paperBottom}
-        >
-          <Box className={classes.songArea}>
-            <Question question={playingQuestion} playEnded={playEnded}/>
-          </Box>
+      <Box display="flex" justifyContent="center"
+           className={classes.paperBottom}
+      >
+        <Box className={classes.songArea}>
+          <Question question={playingQuestion} playEnded={playEnded}/>
         </Box>
       </Box>
-    </Modal>
+    </>
   );
 }

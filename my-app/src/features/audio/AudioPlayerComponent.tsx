@@ -3,6 +3,7 @@ import {AudioPlayer} from "./AudioPlayer";
 import {useSelector} from "react-redux";
 import {selectActiveNumbers} from "../song/songSlice";
 import {PlayButton} from "../player/PlayButton";
+import {ModalPlayer} from "../player/ModalPlayer";
 
 
 // Fisher–Yates アルゴリズム
@@ -30,7 +31,11 @@ export function AudioPlayerComponent() {
       <PlayButton onClick={() => setPlaying(true)}>
         歌の読み上げ
       </PlayButton>
-      {playing && (<AudioPlayer songNums={playSongs} callbackStop={stoppedPlay}/>)}
+      {playing && (
+        <ModalPlayer callbackStop={stoppedPlay}>
+          <AudioPlayer songNums={playSongs} callbackStop={stoppedPlay}/>
+        </ModalPlayer>
+      )}
     </>
   );
 }
