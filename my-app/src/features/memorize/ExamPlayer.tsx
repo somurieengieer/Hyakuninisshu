@@ -4,7 +4,6 @@ import {Question, QuestionItem} from "./question/Question";
 import {nextSong, previousSong, resetSong, selectPlayingNumber} from "../song/playingSongSlice";
 import {useDispatch, useSelector} from "react-redux";
 import {ModalPlayer} from "../player/ModalPlayer";
-import {QuestionHeader} from "./question/QuestionHeader";
 import {QuestionFooter} from "./question/QuestionFooter";
 
 
@@ -44,11 +43,7 @@ export function ExamPlayer({questions, callbackStop}: AudioPlayerProps) {
 
   return (
     <ModalPlayer callbackStop={stop}
-                 headerJSX={(
-                   <QuestionHeader>
-                     {playingIndex + 1} / {questions.length}
-                   </QuestionHeader>
-                 )}
+                 headerText={`${playingIndex + 1} / ${questions.length}`}
                  footerJSX={(
                    <QuestionFooter showAnswer={showAnswer}
                                    setShowAnswer={setShowAnswer}

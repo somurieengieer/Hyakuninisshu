@@ -1,6 +1,6 @@
 import React from 'react';
 import {makeStyles} from "@material-ui/core/styles";
-import {Box, IconButton, Modal} from "@material-ui/core";
+import {Box, IconButton, Modal, Typography} from "@material-ui/core";
 import CloseIcon from '@material-ui/icons/Close';
 import {theme} from "../../materialui/theme";
 
@@ -59,13 +59,13 @@ const useStyles = makeStyles({
 
 interface ModalPlayerProps {
   callbackStop: () => void
-  headerJSX?: JSX.Element // TODO: ReactNodeでも良さそう。どっちが良い？？
+  headerText?: string // TODO: ReactNodeでも良さそう。どっちが良い？？
   footerJSX?: JSX.Element
 }
 
 // 序歌も含めて流す連番を引数とする
 export const ModalPlayer: React.FC<ModalPlayerProps> =
-  ({callbackStop, headerJSX, footerJSX, children}) => {
+  ({callbackStop, headerText, footerJSX, children}) => {
 
     const classes = useStyles();
 
@@ -89,9 +89,11 @@ export const ModalPlayer: React.FC<ModalPlayerProps> =
                 <CloseIcon style={{fontSize: '3em'}}/>
               </IconButton>
             </Box>
-            <div>
-              {headerJSX}
-            </div>
+            <Box display="flex" justifyContent="center">
+              <Typography variant="h6">
+                {headerText}
+              </Typography>
+            </Box>
           </Box>
 
           <Box display="flex" justifyContent="center" className={classes.layoutMain}>

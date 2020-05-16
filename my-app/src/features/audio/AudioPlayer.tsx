@@ -11,7 +11,6 @@ import {SongInfo} from "../song/SongInfo";
 import {useDispatch, useSelector} from "react-redux";
 import {nextSong, previousSong, resetSong, selectPlayingNumber} from "../song/playingSongSlice";
 import {ModalPlayer} from "../player/ModalPlayer";
-import {QuestionHeader} from "../memorize/question/QuestionHeader";
 
 
 const useStyles = makeStyles({
@@ -73,11 +72,7 @@ export function AudioPlayer({songNums, callbackStop}: AudioPlayerProps) {
 
   return (
     <ModalPlayer callbackStop={stop}
-                 headerJSX={(
-                   <QuestionHeader>
-                     {playingIndex + 1} / {songNums.length}
-                   </QuestionHeader>
-                 )}
+                 headerText={`${playingIndex + 1} / ${songNums.length}`}
     >
       <Box display="flex" justifyContent="center" alignItems="center"
       >
