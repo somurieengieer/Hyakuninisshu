@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import {makeStyles} from "@material-ui/core/styles";
-import {theme} from "../../materialui/theme";
 import {Question, QuestionItem} from "./Question";
 import {nextSong, resetSong, selectPlayingNumber} from "../song/playingSongSlice";
 import {useDispatch, useSelector} from "react-redux";
@@ -10,42 +9,6 @@ import {QuestionFooter} from "./QuestionFooter";
 
 
 const useStyles = makeStyles({
-  paper: {
-    backgroundImage: `url(${process.env.PUBLIC_URL}/image/washi.jpg)`,
-  },
-  paperTop: {
-    backgroundImage: `url(${process.env.PUBLIC_URL}/image/wagara_top.png)`,
-    backgroundRepeat: 'no-repeat',
-  },
-  paperBottom: {
-    backgroundImage: `url(${process.env.PUBLIC_URL}/image/wagara_bottom.png)`,
-    backgroundRepeat: 'no-repeat',
-    backgroundPosition: 'bottom right 0px',
-  },
-  iconBig: {
-    [theme.breakpoints.down('xs')]: {
-      fontSize: '6em'
-    },
-    [theme.breakpoints.up('sm')]: {
-      fontSize: '10em'
-    }
-  },
-  iconSmall: {
-    [theme.breakpoints.down('xs')]: {
-      fontSize: '3em'
-    },
-    [theme.breakpoints.up('sm')]: {
-      fontSize: '6em'
-    }
-  },
-  songArea: {
-    [theme.breakpoints.down('xs')]: {
-      width: 400
-    },
-    [theme.breakpoints.up('sm')]: {
-      width: 560,
-    }
-  },
 });
 
 interface AudioPlayerProps {
@@ -80,29 +43,20 @@ export function ExamPlayer({questions, callbackStop}: AudioPlayerProps) {
   };
 
   return (
-    <>
-      <ModalPlayer callbackStop={stop}
-                   headerJSX={(
-                     <QuestionHeader>
-                       {playingIndex + 1} / {questions.length}
-                     </QuestionHeader>
-                   )}
-                   footerJSX={(
-                     <QuestionFooter showAnswer={showAnswer}
-                                     setShowAnswer={setShowAnswer}
-                                     playNext={playNext}
-                     />
-                   )}
-      >
-
-        {/*<Box display="flex" justifyContent="center"*/}
-        {/*     className={classes.paperBottom}*/}
-        {/*>*/}
-        {/*  <Box className={classes.songArea}>*/}
-        <Question question={playingQuestion} showAnswer={showAnswer} playEnded={playNext}/>
-        {/*</Box>*/}
-        {/*</Box>*/}
-      </ModalPlayer>
-    </>
+    <ModalPlayer callbackStop={stop}
+                 headerJSX={(
+                   <QuestionHeader>
+                     {playingIndex + 1} / {questions.length}
+                   </QuestionHeader>
+                 )}
+                 footerJSX={(
+                   <QuestionFooter showAnswer={showAnswer}
+                                   setShowAnswer={setShowAnswer}
+                                   playNext={playNext}
+                   />
+                 )}
+    >
+      <Question question={playingQuestion} showAnswer={showAnswer} playEnded={playNext}/>
+    </ModalPlayer>
   );
 }

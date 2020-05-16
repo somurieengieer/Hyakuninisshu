@@ -9,21 +9,13 @@ import {PlayingAudio, PlayStatuses} from "./PlayingAudio";
 import {SongTypography} from "./SongTypography";
 import {theme} from "../../materialui/theme";
 import {SongInfo} from "../song/SongInfo";
+import {useDispatch, useSelector} from "react-redux";
+import {nextSong, previousSong, resetSong, selectPlayingNumber} from "../song/playingSongSlice";
+import {ModalPlayer} from "../player/ModalPlayer";
+import {QuestionHeader} from "../memorize/QuestionHeader";
 
 
 const useStyles = makeStyles({
-  paper: {
-    backgroundImage: `url(${process.env.PUBLIC_URL}/image/washi.jpg)`,
-  },
-  paperTop: {
-    backgroundImage: `url(${process.env.PUBLIC_URL}/image/wagara_top.png)`,
-    backgroundRepeat: 'no-repeat',
-  },
-  paperBottom: {
-    backgroundImage: `url(${process.env.PUBLIC_URL}/image/wagara_bottom.png)`,
-    backgroundRepeat: 'no-repeat',
-    backgroundPosition: 'bottom right 0px',
-  },
   iconBig: {
     [theme.breakpoints.down('xs')]: {
       fontSize: '6em'
@@ -40,14 +32,6 @@ const useStyles = makeStyles({
       fontSize: '4em'
     }
   },
-  songArea: {
-    [theme.breakpoints.down('xs')]: {
-      width: 400
-    },
-    [theme.breakpoints.up('sm')]: {
-      width: 560,
-    }
-  },
 });
 
 interface AudioPlayerProps {
@@ -58,20 +42,26 @@ interface AudioPlayerProps {
 // 序歌も含めて流す連番を引数とする
 export function AudioPlayer({songNums, callbackStop}: AudioPlayerProps) {
   const classes = useStyles();
+  const dispatch = useDispatch();
 
   const [playStatus, setPlayStatus] = useState<PlayStatuses>(PlayStatuses.PLAYING);
-  const [playingIndex, setPlayingIndex] = useState<number>(0);
+  const playingIndex = useSelector(selectPlayingNumber);
 
   const playingSong = new SongInfo(songNums[playingIndex]);
 
-  const playEnded = () => {
+  const playNext = () => {
     if (playingIndex < songNums.length - 1) {
-      setPlayingIndex(playingIndex+1);
+      dispatch(nextSong())
     } else {
-      setPlayingIndex(0);
-      setPlayStatus(PlayStatuses.STOPPED)
+      dispatch(resetSong());
+      setPlayStatus(PlayStatuses.PAUSED)
     }
   };
+
+  const playPrevious = () => {
+    dispatch(previousSong())
+  };
+
 
   const stop = () => {
     setPlayStatus(PlayStatuses.STOPPED);
@@ -79,11 +69,17 @@ export function AudioPlayer({songNums, callbackStop}: AudioPlayerProps) {
   };
 
   return (
-    <>
+    <ModalPlayer callbackStop={stop}
+                 headerJSX={(
+                   <QuestionHeader>
+                     {playingIndex + 1} / {songNums.length}
+                   </QuestionHeader>
+                 )}
+    >
       <Box display="flex" justifyContent="center" alignItems="center"
       >
         <Box p={1}>
-          <IconButton onClick={() => setPlayingIndex(playingIndex - 1)}
+          <IconButton onClick={playPrevious}
                       disabled={playingIndex <= 0}
                       component="span">
             <SkipPreviousIcon className={classes.iconSmall}/>
@@ -103,7 +99,7 @@ export function AudioPlayer({songNums, callbackStop}: AudioPlayerProps) {
           )}
         </Box>
         <Box p={1}>
-          <IconButton onClick={() => setPlayingIndex(playingIndex + 1)}
+          <IconButton onClick={playNext}
                       disabled={playingIndex >= songNums.length - 1}
                       component="span">
             <SkipNextIcon className={classes.iconSmall}/>
@@ -111,15 +107,9 @@ export function AudioPlayer({songNums, callbackStop}: AudioPlayerProps) {
         </Box>
       </Box>
 
-      <PlayingAudio songInfo={playingSong} playEnded={playEnded} playingStatus={playStatus}/>
+      <PlayingAudio songInfo={playingSong} playEnded={playNext} playingStatus={playStatus}/>
 
-      <Box display="flex" justifyContent="center"
-           className={classes.paperBottom}
-      >
-        <Box className={classes.songArea}>
-          <SongTypography song={playingSong}/>
-            </Box>
-          </Box>
-    </>
+      <SongTypography song={playingSong}/>
+    </ModalPlayer>
   );
 }
