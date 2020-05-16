@@ -16,6 +16,7 @@ interface AudioPlayerProps {
 
 // 序歌も含めて流す連番を引数とする
 export function ExamPlayer({questions, callbackStop}: AudioPlayerProps) {
+
   const classes = useStyles();
   const dispatch = useDispatch();
 

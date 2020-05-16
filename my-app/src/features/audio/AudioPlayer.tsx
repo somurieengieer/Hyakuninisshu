@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {makeStyles} from "@material-ui/core/styles";
 import {Box, IconButton} from "@material-ui/core";
+import PlayCircleFilledIcon from '@material-ui/icons/PlayCircleFilled';
 import PauseCircleFilledIcon from '@material-ui/icons/PauseCircleFilled';
 import SkipPreviousIcon from '@material-ui/icons/SkipPrevious';
 import SkipNextIcon from '@material-ui/icons/SkipNext';
@@ -56,8 +57,12 @@ export function AudioPlayer({songNums, callbackStop}: AudioPlayerProps) {
     }
   };
 
+  const playing = () => {
+    return playStatus == PlayStatuses.PLAYING
+  };
+
   const switchPlay = () => {
-    setPlayStatus(PlayStatuses.PLAYING ? PlayStatuses.PAUSED : PlayStatuses.PLAYING)
+    setPlayStatus(playStatus == PlayStatuses.PLAYING ? PlayStatuses.PAUSED : PlayStatuses.PLAYING)
   };
 
   const playPrevious = () => {
@@ -84,7 +89,11 @@ export function AudioPlayer({songNums, callbackStop}: AudioPlayerProps) {
         <Box p={1}>
           <IconButton onClick={switchPlay}
                       component="span">
-            <PauseCircleFilledIcon className={classes.iconBig}/>
+            {playing() ? (
+              <PauseCircleFilledIcon className={classes.iconBig}/>
+            ) : (
+              <PlayCircleFilledIcon className={classes.iconBig}/>
+            )}
           </IconButton>
         </Box>
         <Box p={1}>

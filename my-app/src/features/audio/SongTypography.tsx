@@ -1,7 +1,20 @@
 import React from 'react';
 import {Box, Typography} from "@material-ui/core";
 import {SongInfo} from "../song/SongInfo";
+import {makeStyles} from "@material-ui/core/styles";
+import {theme} from "../../materialui/theme";
 
+
+const useStyles = makeStyles({
+  songMain: {
+    [theme.breakpoints.down('xs')]: {
+      width: 400
+    },
+    [theme.breakpoints.up('sm')]: {
+      width: 500,
+    },
+  },
+});
 
 export enum TextPosition {
   LEFT = 'flex-start',
@@ -33,11 +46,13 @@ interface SongTypographyProps {
 }
 
 // 序歌も含めて流す連番を引数とする
-export const SongTypography: React.FC<SongTypographyProps> =
-  ({song, children}) => {
+export function SongTypography({song}: SongTypographyProps) {
 
-    return (
-      <>
+  const classes = useStyles();
+
+  return (
+    <Box display="flex" justifyContent="center">
+      <Box className={classes.songMain}>
         <SongOneLine position={TextPosition.LEFT}>
           {song.song[0]}
         </SongOneLine>
@@ -53,6 +68,7 @@ export const SongTypography: React.FC<SongTypographyProps> =
         <SongOneLine position={TextPosition.CENTER}>
           {song.song[4]}
         </SongOneLine>
-      </>
-    );
-};
+      </Box>
+    </Box>
+  );
+}
