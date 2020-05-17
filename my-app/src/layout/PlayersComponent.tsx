@@ -5,7 +5,8 @@ import {ExamShimoKamiComponent} from "../features/memorize/ExamShimoKamiComponen
 import {makeStyles} from "@material-ui/core/styles";
 import {Box, Divider, List, ListItem, ListItemText, Typography} from "@material-ui/core";
 import {theme} from "../materialui/theme";
-import {TimeSlider} from "../features/player/TimeSlider";
+import {IntervalTimeSlider} from "../features/player/IntervalTimeSlider";
+import {ContinuousPlayBackCheckBox} from "../features/player/ContinuousPlayBackCheckBox";
 
 
 const useStyles = makeStyles({
@@ -62,7 +63,8 @@ export function PlayersComponent() {
                 >
                   序歌を読んだ後、選択した歌をランダムに読み上げます。
                 </Typography>
-                <TimeSlider/>
+                <ContinuousPlayBackCheckBox/>
+                <IntervalTimeSlider/>
               </React.Fragment>
             }
           />

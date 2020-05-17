@@ -12,7 +12,7 @@ import {SongInfo} from "../song/SongInfo";
 import {useDispatch, useSelector} from "react-redux";
 import {nextSong, previousSong, resetSong, selectPlayingNumber} from "../song/playingSongSlice";
 import {ModalPlayer} from "../player/ModalPlayer";
-import {selectIntervalSecond} from "../player/intervalSecondSlice"
+import {selectContinuousPlayBack, selectIntervalSecond} from "../player/playOptionSlice"
 
 
 const useStyles = makeStyles({
@@ -47,6 +47,7 @@ export function AudioPlayer({songNums, callbackStop}: AudioPlayerProps) {
   const [playStatus, setPlayStatus] = useState<PlayStatuses>(PlayStatuses.PLAYING);
   const playingIndex = useSelector(selectPlayingNumber);
   const intervalSecond = useSelector(selectIntervalSecond);
+  const continuousPlayBack = useSelector(selectContinuousPlayBack);
 
   const playingSong = new SongInfo(songNums[playingIndex]);
 
@@ -60,7 +61,12 @@ export function AudioPlayer({songNums, callbackStop}: AudioPlayerProps) {
   };
 
   const playNextTimer = () => {
-    setTimeout(playNext, intervalSecond * 1000)
+    if (continuousPlayBack) {
+      setTimeout(playNext, intervalSecond * 1000)
+    } else {
+      playNext();
+      setPlayStatus(PlayStatuses.PAUSED)
+    }
   };
 
   const playing = () => {

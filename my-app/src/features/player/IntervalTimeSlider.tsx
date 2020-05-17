@@ -6,7 +6,7 @@ import Slider from '@material-ui/core/Slider';
 import Input from '@material-ui/core/Input';
 import SpeedIcon from '@material-ui/icons/Speed';
 import {useDispatch, useSelector} from "react-redux";
-import {selectIntervalSecond, setIntervalSecond} from "./intervalSecondSlice"
+import {selectIntervalSecond, setIntervalSecond} from "./playOptionSlice"
 
 const useStyles = makeStyles({
   root: {},
@@ -18,7 +18,7 @@ const useStyles = makeStyles({
   },
 });
 
-export function TimeSlider() {
+export function IntervalTimeSlider() {
   const classes = useStyles();
   const dispatch = useDispatch();
 

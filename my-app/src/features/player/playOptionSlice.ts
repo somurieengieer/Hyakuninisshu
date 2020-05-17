@@ -3,10 +3,12 @@ import {RootState} from '../../app/store';
 
 interface State {
   intervalSecond: number
+  continuousPlayBack: boolean
 }
 
 const initialState: State = {
-  intervalSecond: 0
+  intervalSecond: 0,
+  continuousPlayBack: true,
 };
 
 export const playOptionSlice = createSlice({
@@ -23,14 +25,21 @@ export const playOptionSlice = createSlice({
         state.intervalSecond = action.payload
       }
     },
+    setContinuousPlayBack: (state, action: PayloadAction<boolean>) => {
+      state.continuousPlayBack = action.payload
+    }
   },
 });
 
-export const {setIntervalSecond} = playOptionSlice.actions;
+export const {
+  setIntervalSecond,
+  setContinuousPlayBack
+} = playOptionSlice.actions;
 
 // The function below is called a selector and allows us to select a value from
 // the state. Selectors can also be defined inline where they're used instead of
 // in the slice file. For example: `useSelector((state: RootState) => state.counter.value)`
 export const selectIntervalSecond = (state: RootState) => state.playOption.intervalSecond;
+export const selectContinuousPlayBack = (state: RootState) => state.playOption.continuousPlayBack;
 
 export default playOptionSlice.reducer;
