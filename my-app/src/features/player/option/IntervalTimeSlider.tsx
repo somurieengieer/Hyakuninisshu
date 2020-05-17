@@ -30,7 +30,6 @@ export function IntervalTimeSlider() {
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const val = Number(event.target.value);
-    console.log(val);
     if (!isNaN(val)) {
       dispatch(setIntervalSecond(val))
     }

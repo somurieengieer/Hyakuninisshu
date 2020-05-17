@@ -22,11 +22,10 @@ export interface QuestionItem {
 export interface QuestionProps {
   question: QuestionItem
   showAnswer: boolean
-  playEnded: () => void
 }
 
 // 序歌も含めて流す連番を引数とする
-export function Question({question, showAnswer, playEnded}: QuestionProps) {
+export function Question({question, showAnswer}: QuestionProps) {
 
   const classes = useStyles();
 

@@ -53,7 +53,7 @@ export function ExamPlayer({questions, callbackStop}: AudioPlayerProps) {
                    />
                  )}
     >
-      <Question question={playingQuestion} showAnswer={showAnswer} playEnded={playNext}/>
+      <Question question={playingQuestion} showAnswer={showAnswer}/>
     </ModalPlayer>
   );
 }

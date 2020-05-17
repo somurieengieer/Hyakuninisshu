@@ -1,16 +1,14 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {useSelector} from "react-redux";
 import {selectActiveNumbers} from "../song/songSlice";
-import {ExamPlayer} from "./ExamPlayer";
 import {SongInfo} from "../song/SongInfo";
-import {PlayButton} from "../player/PlayButton";
 import {shuffle} from "../../utils/Utils";
+import {ExamComponent} from "./ExamComponent";
 
 
 export function ExamShimoKamiComponent() {
 
   const activeSongNums = useSelector(selectActiveNumbers);
-  const [playing, setPlaying] = useState<boolean>(false);
   const questions = shuffle(activeSongNums)
     .map(num => new SongInfo(num))
     .map(info => ({
@@ -24,18 +22,8 @@ export function ExamShimoKamiComponent() {
       ],
     }));
 
-  const stoppedPlay = () => {
-    setPlaying(false)
-  };
-
   return (
-    <>
-      <PlayButton onClick={() => setPlaying(true)}>
-      </PlayButton>
-      {playing && (
-        <ExamPlayer questions={questions} callbackStop={stoppedPlay}/>
-      )}
-    </>
+    <ExamComponent questions={questions}/>
   );
 }
 

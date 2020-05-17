@@ -18,8 +18,7 @@ export function AudioPlayerComponent() {
 
   return (
     <>
-      <PlayButton onClick={() => setPlaying(true)}>
-      </PlayButton>
+      <PlayButton onClick={() => setPlaying(true)}/>
       {playing && (
         <AudioPlayer songNums={playSongs} callbackStop={stoppedPlay}/>
       )}

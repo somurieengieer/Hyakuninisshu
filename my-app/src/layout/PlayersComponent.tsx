@@ -5,8 +5,9 @@ import {ExamShimoKamiComponent} from "../features/memorize/ExamShimoKamiComponen
 import {makeStyles} from "@material-ui/core/styles";
 import {Box, Divider, List, ListItem, ListItemText, Typography} from "@material-ui/core";
 import {theme} from "../materialui/theme";
-import {IntervalTimeSlider} from "../features/player/IntervalTimeSlider";
-import {ContinuousPlayBackCheckBox} from "../features/player/ContinuousPlayBackCheckBox";
+import {IntervalTimeSlider} from "../features/player/option/IntervalTimeSlider";
+import {ContinuousPlayBackCheckBox} from "../features/player/option/ContinuousPlayBackCheckBox";
+import {SongVisibleCheckBox} from "../features/player/option/SongVisibleCheckBox";
 
 
 const useStyles = makeStyles({
@@ -27,20 +28,6 @@ const useStyles = makeStyles({
     display: 'inline',
   },
 });
-
-const FlexCenter: React.FC = ({children}) => {
-
-  const classes = useStyles();
-
-  return (
-    <Box display="flex" justifyContent="center" m={1} p={1}>
-      <Box display="flex" justifyContent="flex-start"
-           className={classes.playMenuContainer}>
-        {children}
-      </Box>
-    </Box>
-  )
-};
 
 export function PlayersComponent() {
 
@@ -65,6 +52,7 @@ export function PlayersComponent() {
                 </Typography>
                 <ContinuousPlayBackCheckBox/>
                 <IntervalTimeSlider/>
+                <SongVisibleCheckBox/>
               </React.Fragment>
             }
           />

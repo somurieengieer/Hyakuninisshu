@@ -12,7 +12,8 @@ import {SongInfo} from "../song/SongInfo";
 import {useDispatch, useSelector} from "react-redux";
 import {nextSong, previousSong, resetSong, selectPlayingNumber} from "../song/playingSongSlice";
 import {ModalPlayer} from "../player/ModalPlayer";
-import {selectContinuousPlayBack, selectIntervalSecond} from "../player/playOptionSlice"
+import {selectContinuousPlayBack, selectIntervalSecond, selectSongVisible} from "../player/option/playOptionSlice"
+import {SongVisibleCheckBox} from "../player/option/SongVisibleCheckBox";
 
 
 const useStyles = makeStyles({
@@ -48,6 +49,7 @@ export function AudioPlayer({songNums, callbackStop}: AudioPlayerProps) {
   const playingIndex = useSelector(selectPlayingNumber);
   const intervalSecond = useSelector(selectIntervalSecond);
   const continuousPlayBack = useSelector(selectContinuousPlayBack);
+  const songVisible = useSelector(selectSongVisible);
 
   const playingSong = new SongInfo(songNums[playingIndex]);
 
@@ -122,7 +124,12 @@ export function AudioPlayer({songNums, callbackStop}: AudioPlayerProps) {
 
       <PlayingAudio songInfo={playingSong} playEnded={playNextTimer} playingStatus={playStatus}/>
 
-      <SongTypography song={playingSong}/>
+      {songVisible && (
+        <SongTypography song={playingSong}/>
+      )}
+      <Box textAlign={"right"}>
+        <SongVisibleCheckBox/>
+      </Box>
     </ModalPlayer>
   );
 }

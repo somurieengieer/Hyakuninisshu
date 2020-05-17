@@ -1,14 +1,16 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
-import {RootState} from '../../app/store';
+import {RootState} from '../../../app/store';
 
 interface State {
   intervalSecond: number
   continuousPlayBack: boolean
+  songVisible: boolean
 }
 
 const initialState: State = {
   intervalSecond: 0,
   continuousPlayBack: true,
+  songVisible: true,
 };
 
 export const playOptionSlice = createSlice({
@@ -27,13 +29,17 @@ export const playOptionSlice = createSlice({
     },
     setContinuousPlayBack: (state, action: PayloadAction<boolean>) => {
       state.continuousPlayBack = action.payload
+    },
+    setSongVisible: (state, action: PayloadAction<boolean>) => {
+      state.songVisible = action.payload
     }
   },
 });
 
 export const {
   setIntervalSecond,
-  setContinuousPlayBack
+  setContinuousPlayBack,
+  setSongVisible,
 } = playOptionSlice.actions;
 
 // The function below is called a selector and allows us to select a value from
@@ -41,5 +47,6 @@ export const {
 // in the slice file. For example: `useSelector((state: RootState) => state.counter.value)`
 export const selectIntervalSecond = (state: RootState) => state.playOption.intervalSecond;
 export const selectContinuousPlayBack = (state: RootState) => state.playOption.continuousPlayBack;
+export const selectSongVisible = (state: RootState) => state.playOption.songVisible;
 
 export default playOptionSlice.reducer;
