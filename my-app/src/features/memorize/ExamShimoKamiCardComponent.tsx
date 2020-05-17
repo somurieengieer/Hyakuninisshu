@@ -2,7 +2,6 @@ import React from 'react';
 import {useSelector} from "react-redux";
 import {selectActiveNumbers} from "../song/songSlice";
 import {SongInfo} from "../song/SongInfo";
-import {shuffle} from "../../utils/Utils";
 import {ExamComponent} from "./ExamComponent";
 import {QuestionCard} from "./question/QuestionCard";
 
@@ -10,7 +9,7 @@ import {QuestionCard} from "./question/QuestionCard";
 export function ExamShimoKamiCardComponent() {
 
   const activeSongNums = useSelector(selectActiveNumbers);
-  const questions = shuffle(activeSongNums)
+  const questions = activeSongNums
     .map(num => new SongInfo(num))
     .map(info => ({
       question: (<QuestionCard songInfo={info}/>),

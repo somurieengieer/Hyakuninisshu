@@ -10,9 +10,10 @@ export function AudioPlayerComponent() {
 
   const activeSongNums = useSelector(selectActiveNumbers);
   const [playing, setPlaying] = useState<boolean>(false);
-  const playSongs = [0].concat(shuffle(activeSongNums));
+  let playSongs = [0].concat(shuffle(activeSongNums));
 
   const stoppedPlay = () => {
+    playSongs = [0].concat(shuffle(activeSongNums));
     setPlaying(false)
   };
 

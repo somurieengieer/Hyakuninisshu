@@ -2,7 +2,6 @@ import React from 'react';
 import {useSelector} from "react-redux";
 import {selectActiveNumbers} from "../song/songSlice";
 import {SongInfo} from "../song/SongInfo";
-import {shuffle} from "../../utils/Utils";
 import {ExamComponent} from "./ExamComponent";
 import {QuestionText} from "./question/QuestionText";
 
@@ -10,7 +9,7 @@ import {QuestionText} from "./question/QuestionText";
 export function ExamKamiShimoComponent() {
 
   const activeSongNums = useSelector(selectActiveNumbers);
-  const questions = shuffle(activeSongNums)
+  const questions = activeSongNums
     .map(num => new SongInfo(num))
     .map(info => ({
       question: (<QuestionText value={`上の句: ${info.kimariji_kami}`}/>),
