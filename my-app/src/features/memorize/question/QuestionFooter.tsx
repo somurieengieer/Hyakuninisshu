@@ -1,13 +1,26 @@
 import React from 'react';
 import {makeStyles} from "@material-ui/core/styles";
-import {Box} from "@material-ui/core";
+import {Box, Grid} from "@material-ui/core";
 import {QuestionBottomButton} from "./QuestionBottomButton";
 import {useSelector} from "react-redux";
 import {selectActiveNumbers} from "../../song/songSlice";
 import {selectPlayingNumber} from "../../song/playingSongSlice";
+import {theme} from "../../../materialui/theme";
 
 
-const useStyles = makeStyles({});
+const useStyles = makeStyles({
+  root: {
+    [theme.breakpoints.down('xs')]: {
+      width: 400
+    },
+    [theme.breakpoints.up('sm')]: {
+      width: 500,
+    },
+  },
+  button: {
+    textAlign: 'center',
+  }
+});
 
 export interface QuestionProps {
   showAnswer: boolean,
@@ -28,17 +41,25 @@ export function QuestionFooter({showAnswer, setShowAnswer, playPrevious, playNex
 
   return (
     <Box display="flex" justifyContent="center" alignItems="center">
-      <QuestionBottomButton onClick={playPrevious}
-                            disabled={isFirstSong}>
-        前へ
-      </QuestionBottomButton>
-      <QuestionBottomButton onClick={() => setShowAnswer(!showAnswer)}>
-        {!showAnswer ? "答え" : '答えを隠す'}
-      </QuestionBottomButton>
-      <QuestionBottomButton onClick={playNext}
-                            disabled={isLastSong}>
-        次へ
-      </QuestionBottomButton>
+      <Grid container className={classes.root}>
+        <Grid item xs={3} className={classes.button}>
+          <QuestionBottomButton onClick={playPrevious}
+                                disabled={isFirstSong}>
+            前へ
+          </QuestionBottomButton>
+        </Grid>
+        <Grid item xs={6} className={classes.button}>
+          <QuestionBottomButton onClick={() => setShowAnswer(!showAnswer)}>
+            {!showAnswer ? "答え" : '答えを隠す'}
+          </QuestionBottomButton>
+        </Grid>
+        <Grid item xs={3} className={classes.button}>
+          <QuestionBottomButton onClick={playNext}
+                                disabled={isLastSong}>
+            次へ
+          </QuestionBottomButton>
+        </Grid>
+      </Grid>
     </Box>
   )
 }

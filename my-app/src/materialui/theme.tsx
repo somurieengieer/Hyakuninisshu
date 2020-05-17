@@ -35,6 +35,12 @@ const mui = {
         [defaultTheme.breakpoints.down("xs")]: {
           fontSize: "2rem"
         }
+      },
+      h4: {
+        fontSize: "2rem",
+        [defaultTheme.breakpoints.down("xs")]: {
+          fontSize: "1.5rem"
+        }
       }
     }
   }
