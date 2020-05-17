@@ -15,6 +15,8 @@ export function ExamShimoKamiCardComponent() {
       question: (<QuestionCard songInfo={info}/>),
       answer: `上の句: ${info.kimariji_kami}`,
       explanation: [
+        `下の句: ${info.kimariji_shimo}`,
+        '　',
         info.song.slice(0, 3).join('　'),
         info.song.slice(3, 5).join('　'),
         '　',
