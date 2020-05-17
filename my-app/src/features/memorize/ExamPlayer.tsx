@@ -5,6 +5,8 @@ import {nextSong, previousSong, resetSong, selectPlayingNumber} from "../song/pl
 import {useDispatch, useSelector} from "react-redux";
 import {ModalPlayer} from "../player/ModalPlayer";
 import {QuestionFooter} from "./question/QuestionFooter";
+import SwipeableViews from 'react-swipeable-views';
+import {virtualize} from 'react-swipeable-views-utils';
 
 
 const useStyles = makeStyles({});
@@ -25,6 +27,8 @@ export function ExamPlayer({questions, callbackStop}: AudioPlayerProps) {
 
   const playingQuestion = questions[playingIndex];
 
+  const VirtualizeSwipeableViews = virtualize(SwipeableViews);
+
   useEffect(() => {
     setShowAnswer(false)
   }, [playingIndex]);
@@ -42,6 +46,11 @@ export function ExamPlayer({questions, callbackStop}: AudioPlayerProps) {
     callbackStop()
   };
 
+  const onChangeIndex = (index: number, indexLatest: number) => {
+    setShowAnswer(false);
+    dispatch(nextSong())
+  };
+
   return (
     <ModalPlayer callbackStop={stop}
                  headerText={`${playingIndex + 1} / ${questions.length}`}
@@ -53,7 +62,17 @@ export function ExamPlayer({questions, callbackStop}: AudioPlayerProps) {
                    />
                  )}
     >
-      <Question question={playingQuestion} showAnswer={showAnswer}/>
+      <SwipeableViews
+        onChangeIndex={onChangeIndex}
+        enableMouseEvents
+        resistance
+      >
+        {questions.map((question, index) => (
+          <div>
+            <Question question={question} showAnswer={playingIndex == index && showAnswer}/>
+          </div>
+        ))}
+      </SwipeableViews>
     </ModalPlayer>
   );
 }
