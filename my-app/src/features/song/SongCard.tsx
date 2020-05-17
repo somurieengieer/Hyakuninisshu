@@ -7,6 +7,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     writingMode: 'vertical-rl',
     height: '240px',
+    width: '168px',
     textAlign: 'left', // 上寄せになる
     borderColor: 'rgba(0, 150, 0, 0.5)',
     borderStyle: 'solid',
@@ -14,6 +15,11 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2),
     backgroundColor: 'rgba(255, 255, 255, 0.6)',
   },
+  text: {
+    width: '100%',
+    fontSize: '2.7rem', // カードのサイズを固定にするため直書き。variant='h3'の書き方はNG
+    lineHeight: '3.6rem',
+  }
 }));
 
 interface SongProps {
@@ -27,7 +33,7 @@ export function SongCard({songInfo}: SongProps) {
 
   return (
     <Box className={classes.root}>
-      <Typography variant="h3">
+      <Typography className={classes.text}>
         {songInfo.song_hiragana_shimo()}
       </Typography>
     </Box>
