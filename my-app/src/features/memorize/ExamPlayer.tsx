@@ -59,6 +59,7 @@ export function ExamPlayer({questions, callbackStop}: AudioPlayerProps) {
     >
       <SwipeableViews
         onChangeIndex={onChangeIndex}
+        index={playingIndex}
         enableMouseEvents
         resistance
       >

@@ -8,7 +8,7 @@ import {theme} from "../../materialui/theme";
 const useStyles = makeStyles({
   modal: {
     margin: theme.spacing(2),
-    height: 'calc(100vh * 0.9)',
+    height: 'calc(100vh * 0.85)',
   },
 
   // ModalPlayerの背景画像設定
