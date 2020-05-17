@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {Question, QuestionItem} from "./question/Question";
-import {nextSong, previousSong, resetSong, selectPlayingNumber, setSong} from "../song/playingSongSlice";
+import {nextSong, previousSong, resetSong, selectPlayingNumber, setSong} from "../../slice/song/playingSongSlice";
 import {useDispatch, useSelector} from "react-redux";
 import {ModalPlayer} from "../player/ModalPlayer";
 import {QuestionFooter} from "./question/QuestionFooter";

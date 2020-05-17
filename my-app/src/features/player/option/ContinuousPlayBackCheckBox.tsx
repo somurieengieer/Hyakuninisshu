@@ -1,6 +1,6 @@
 import React from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import {selectContinuousPlayBack, setContinuousPlayBack} from "./playOptionSlice"
+import {selectContinuousPlayBack, setContinuousPlayBack} from "../../../slice/player/option/playOptionSlice"
 import {Checkbox, FormControlLabel} from "@material-ui/core";
 
 export function ContinuousPlayBackCheckBox() {

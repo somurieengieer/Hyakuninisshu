@@ -2,8 +2,8 @@ import React, {useEffect} from 'react';
 import {makeStyles} from "@material-ui/core/styles";
 import {Button, Card, CardContent, Typography} from "@material-ui/core";
 import {useDispatch, useSelector} from "react-redux";
-import {replace} from '../song/songSlice';
-import {getSongArchive, selectActiveArchive, setArchive, songArchives} from "./songArchiveSlice";
+import {replace} from '../../slice/song/songSlice';
+import {getSongArchive, selectActiveArchive, setArchive, songArchives} from "../../slice/songArchive/songArchiveSlice";
 import classNames from "classnames";
 
 const useStyles = makeStyles({

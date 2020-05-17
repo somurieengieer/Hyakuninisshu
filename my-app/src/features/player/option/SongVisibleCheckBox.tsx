@@ -1,6 +1,6 @@
 import React from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import {selectSongVisible, setSongVisible} from "./playOptionSlice"
+import {selectSongVisible, setSongVisible} from "../../../slice/player/option/playOptionSlice"
 import {Checkbox, FormControlLabel} from "@material-ui/core";
 
 

@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {AudioPlayer} from "./AudioPlayer";
 import {useSelector} from "react-redux";
-import {selectActiveNumbers} from "../song/songSlice";
+import {selectActiveNumbers} from "../../slice/song/songSlice";
 import {PlayButton} from "../player/PlayButton";
 import {shuffle} from "../../utils/Utils";
 

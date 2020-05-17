@@ -1,8 +1,8 @@
 import {Action, configureStore, ThunkAction} from '@reduxjs/toolkit';
-import songReducer from '../features/song/songSlice'
-import playingSongReducer from '../features/song/playingSongSlice'
-import songArchiveReducer from '../features/songArchive/songArchiveSlice'
-import playOptionReducer from '../features/player/option/playOptionSlice'
+import songReducer from '../slice/song/songSlice'
+import playingSongReducer from '../slice/song/playingSongSlice'
+import songArchiveReducer from '../slice/songArchive/songArchiveSlice'
+import playOptionReducer from '../slice/player/option/playOptionSlice'
 import {createLogger} from "redux-logger";
 
 const logger = createLogger({

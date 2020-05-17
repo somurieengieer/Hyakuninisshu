@@ -1,6 +1,6 @@
 import React from 'react';
 import {useSelector} from "react-redux";
-import {selectActiveNumbers} from "../song/songSlice";
+import {selectActiveNumbers} from "../../slice/song/songSlice";
 import {SongInfo} from "../song/SongInfo";
 import {ExamComponent} from "./ExamComponent";
 import {QuestionCard} from "./question/QuestionCard";

@@ -10,9 +10,13 @@ import {SongTypography} from "./SongTypography";
 import {theme} from "../../materialui/theme";
 import {SongInfo} from "../song/SongInfo";
 import {useDispatch, useSelector} from "react-redux";
-import {nextSong, previousSong, resetSong, selectPlayingNumber} from "../song/playingSongSlice";
+import {nextSong, previousSong, resetSong, selectPlayingNumber} from "../../slice/song/playingSongSlice";
 import {ModalPlayer} from "../player/ModalPlayer";
-import {selectContinuousPlayBack, selectIntervalSecond, selectSongVisible} from "../player/option/playOptionSlice"
+import {
+  selectContinuousPlayBack,
+  selectIntervalSecond,
+  selectSongVisible
+} from "../../slice/player/option/playOptionSlice"
 import {SongVisibleCheckBox} from "../player/option/SongVisibleCheckBox";
 
 

@@ -3,8 +3,8 @@ import {makeStyles} from "@material-ui/core/styles";
 import {Box, Grid} from "@material-ui/core";
 import {QuestionBottomButton} from "./QuestionBottomButton";
 import {useSelector} from "react-redux";
-import {selectActiveNumbers} from "../../song/songSlice";
-import {selectPlayingNumber} from "../../song/playingSongSlice";
+import {selectActiveNumbers} from "../../../slice/song/songSlice";
+import {selectPlayingNumber} from "../../../slice/song/playingSongSlice";
 import {theme} from "../../../materialui/theme";
 
 

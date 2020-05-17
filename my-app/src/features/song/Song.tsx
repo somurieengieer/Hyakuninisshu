@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import {add, remove, selectActiveNumbers,} from './songSlice';
+import {add, remove, selectActiveNumbers,} from '../../slice/song/songSlice';
 import {Checkbox, ListItem, ListItemIcon, ListItemSecondaryAction, ListItemText, Typography} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
 import {SongInfo} from "./SongInfo";
