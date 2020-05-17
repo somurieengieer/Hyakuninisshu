@@ -22,10 +22,13 @@ export const playingSongSlice = createSlice({
     previousSong: (state, action: PayloadAction) => {
       state.playingNumber -= 1
     },
+    setSong: (state, action: PayloadAction<number>) => {
+      state.playingNumber = action.payload
+    },
   },
 });
 
-export const {resetSong, nextSong, previousSong} = playingSongSlice.actions;
+export const {resetSong, nextSong, previousSong, setSong} = playingSongSlice.actions;
 
 // The function below is called a selector and allows us to select a value from
 // the state. Selectors can also be defined inline where they're used instead of

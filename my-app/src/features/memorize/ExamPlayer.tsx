@@ -1,12 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import {makeStyles} from "@material-ui/core/styles";
 import {Question, QuestionItem} from "./question/Question";
-import {nextSong, previousSong, resetSong, selectPlayingNumber} from "../song/playingSongSlice";
+import {nextSong, previousSong, resetSong, selectPlayingNumber, setSong} from "../song/playingSongSlice";
 import {useDispatch, useSelector} from "react-redux";
 import {ModalPlayer} from "../player/ModalPlayer";
 import {QuestionFooter} from "./question/QuestionFooter";
 import SwipeableViews from 'react-swipeable-views';
-import {virtualize} from 'react-swipeable-views-utils';
 
 
 const useStyles = makeStyles({});
@@ -24,10 +23,6 @@ export function ExamPlayer({questions, callbackStop}: AudioPlayerProps) {
 
   const playingIndex = useSelector(selectPlayingNumber);
   const [showAnswer, setShowAnswer] = useState<boolean>(false);
-
-  const playingQuestion = questions[playingIndex];
-
-  const VirtualizeSwipeableViews = virtualize(SwipeableViews);
 
   useEffect(() => {
     setShowAnswer(false)
@@ -48,7 +43,7 @@ export function ExamPlayer({questions, callbackStop}: AudioPlayerProps) {
 
   const onChangeIndex = (index: number, indexLatest: number) => {
     setShowAnswer(false);
-    dispatch(nextSong())
+    dispatch(setSong(index))
   };
 
   return (
