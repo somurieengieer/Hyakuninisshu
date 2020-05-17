@@ -44,6 +44,7 @@ export function ExamPlayer({questions, callbackStop}: AudioPlayerProps) {
 
   return (
     <ModalPlayer callbackStop={stop}
+                 headerText={`${playingIndex + 1} / ${questions.length}`}
                  footerJSX={(
                    <QuestionFooter showAnswer={showAnswer}
                                    setShowAnswer={setShowAnswer}

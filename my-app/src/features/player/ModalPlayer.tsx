@@ -3,9 +3,6 @@ import {makeStyles} from "@material-ui/core/styles";
 import {Box, IconButton, Modal, Typography} from "@material-ui/core";
 import CloseIcon from '@material-ui/icons/Close';
 import {theme} from "../../materialui/theme";
-import {useSelector} from "react-redux";
-import {selectPlayingNumber} from "../song/playingSongSlice";
-import {selectActiveNumbers} from "../song/songSlice";
 
 
 const useStyles = makeStyles({
@@ -62,17 +59,15 @@ const useStyles = makeStyles({
 
 interface ModalPlayerProps {
   callbackStop: () => void
+  headerText: string
   footerJSX?: JSX.Element
 }
 
 // 序歌も含めて流す連番を引数とする
 export const ModalPlayer: React.FC<ModalPlayerProps> =
-  ({callbackStop, footerJSX, children}) => {
+  ({callbackStop, headerText, footerJSX, children}) => {
 
     const classes = useStyles();
-
-    const playingIndex = useSelector(selectPlayingNumber);
-    const numberOfActiveSongs = useSelector(selectActiveNumbers).length;
 
     const stop = () => {
       callbackStop()
@@ -96,7 +91,7 @@ export const ModalPlayer: React.FC<ModalPlayerProps> =
             </Box>
             <Box display="flex" justifyContent="center">
               <Typography variant="h6">
-                {`${playingIndex + 1} / ${numberOfActiveSongs}`}
+                {headerText}
               </Typography>
             </Box>
           </Box>
