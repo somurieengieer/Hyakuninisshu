@@ -8,7 +8,7 @@ import {theme} from "../../materialui/theme";
 const useStyles = makeStyles({
   songMain: {
     [theme.breakpoints.down('xs')]: {
-      width: 400
+      width: 300
     },
     [theme.breakpoints.up('sm')]: {
       width: 500,
@@ -33,7 +33,7 @@ const SongOneLine: React.FC<SongOneLineProps> =
       <Box display="flex" justifyContent={position}>
         <Box>
           {/*h3のレスポンシブフォントサイズ変更はtheme.tsxに記載*/}
-          <Typography variant='h4' gutterBottom>
+          <Typography variant='h3' gutterBottom>
             {children}
           </Typography>
         </Box>

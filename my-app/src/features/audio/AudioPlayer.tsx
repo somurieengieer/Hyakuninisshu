@@ -19,7 +19,7 @@ import {SongVisibleCheckBox} from "../player/option/SongVisibleCheckBox";
 const useStyles = makeStyles({
   iconBig: {
     [theme.breakpoints.down('xs')]: {
-      fontSize: '6em'
+      fontSize: '4em'
     },
     [theme.breakpoints.up('sm')]: {
       fontSize: '8em'
@@ -27,7 +27,7 @@ const useStyles = makeStyles({
   },
   iconSmall: {
     [theme.breakpoints.down('xs')]: {
-      fontSize: '3em'
+      fontSize: '1.5em'
     },
     [theme.breakpoints.up('sm')]: {
       fontSize: '4em'

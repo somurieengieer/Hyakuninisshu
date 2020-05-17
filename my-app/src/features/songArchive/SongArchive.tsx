@@ -30,10 +30,10 @@ export function SongArchive() {
 
   return (
     <>
-      <Typography variant="h5">
+      <Typography variant="subtitle1">
         曲集を以下から選択してください。
       </Typography>
-      <Typography variant="h5">
+      <Typography variant="subtitle1">
         チェックされた曲をランダムで読み上げ・テストします。
       </Typography>
       <div>

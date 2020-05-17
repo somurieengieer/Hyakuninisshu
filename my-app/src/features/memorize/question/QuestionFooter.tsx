@@ -11,10 +11,10 @@ import {theme} from "../../../materialui/theme";
 const useStyles = makeStyles({
   root: {
     [theme.breakpoints.down('xs')]: {
-      width: 400
+      width: '300px',
     },
     [theme.breakpoints.up('sm')]: {
-      width: 500,
+      width: '500px',
     },
   },
   button: {

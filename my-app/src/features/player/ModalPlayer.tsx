@@ -22,7 +22,7 @@ const useStyles = makeStyles({
   },
   paperMain: {
     [theme.breakpoints.down('xs')]: {
-      width: 400
+      width: 300
     },
     [theme.breakpoints.up('sm')]: {
       width: 560,
@@ -86,7 +86,7 @@ export const ModalPlayer: React.FC<ModalPlayerProps> =
             <Box display="flex" justifyContent="flex-end" p={1}>
               <IconButton onClick={stop}
                           component="span">
-                <CloseIcon style={{fontSize: '3em'}}/>
+                <CloseIcon style={{fontSize: '2em'}}/>
               </IconButton>
             </Box>
             <Box display="flex" justifyContent="center">

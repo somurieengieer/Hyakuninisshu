@@ -24,7 +24,7 @@ export const QuestionBottomButton: React.FC<QuestionProps> =
       <Button variant="contained" onClick={onClick} size="medium" color="primary"
               disabled={disabled}
               className={classes.margin}>
-        <Typography variant='h4' gutterBottom>
+        <Typography variant='caption' gutterBottom>
           {children}
         </Typography>
       </Button>

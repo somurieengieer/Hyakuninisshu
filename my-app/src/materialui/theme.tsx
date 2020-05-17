@@ -31,16 +31,23 @@ const mui = {
   overrides: {
     MuiTypography: {
       h3: {
-        fontSize: "3rem",
+        fontSize: "2rem",
         [defaultTheme.breakpoints.down("xs")]: {
-          fontSize: "2rem"
+          fontSize: "1.5rem"
         }
       },
       h4: {
         fontSize: "2rem",
         [defaultTheme.breakpoints.down("xs")]: {
-          fontSize: "1.5rem"
+          fontSize: "1.2rem"
         }
+      },
+      caption: {
+        fontSize: "1.4rem",
+        [defaultTheme.breakpoints.down("xs")]: {
+          fontSize: "1.0rem"
+        }
+
       }
     }
   }

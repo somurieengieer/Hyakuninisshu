@@ -43,7 +43,7 @@ export function Question({question, showAnswer}: QuestionProps) {
           </Typography>
           <Box className={classes.marginTop4}>
             {question.explanation.map(exp => (
-              <Typography variant='h5' className={classes.marginTop2}>
+              <Typography variant='body2' className={classes.marginTop2}>
                 {exp}
               </Typography>
             ))}
