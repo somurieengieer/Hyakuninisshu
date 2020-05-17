@@ -4,6 +4,7 @@ import {selectActiveNumbers} from "../song/songSlice";
 import {SongInfo} from "../song/SongInfo";
 import {shuffle} from "../../utils/Utils";
 import {ExamComponent} from "./ExamComponent";
+import {QuestionText} from "./question/QuestionText";
 
 
 export function ExamShimoKamiComponent() {
@@ -12,7 +13,7 @@ export function ExamShimoKamiComponent() {
   const questions = shuffle(activeSongNums)
     .map(num => new SongInfo(num))
     .map(info => ({
-      question: [`下の句: ${info.kimariji_shimo}`],
+      question: (<QuestionText value={`下の句: ${info.kimariji_shimo}`}/>),
       answer: `上の句: ${info.kimariji_kami}`,
       explanation: [
         info.song.slice(0, 3).join('　'),

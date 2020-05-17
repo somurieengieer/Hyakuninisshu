@@ -17,6 +17,10 @@ export class SongInfo {
     this.path = `${process.env.PUBLIC_URL}/songs/${numStr}番.m4a`;
   }
 
+  public song_hiragana_shimo(): string {
+    return this.song_hiragana?.slice(3, 5).join('') || ''
+  }
+
   public songDisplay(): string {
     return this.song.join(' ')
   }

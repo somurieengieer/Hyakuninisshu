@@ -14,7 +14,7 @@ const useStyles = makeStyles({
 });
 
 export interface QuestionItem {
-  question: string[]
+  question: JSX.Element
   answer: string
   explanation: string[]
 }
@@ -29,13 +29,13 @@ export function Question({question, showAnswer}: QuestionProps) {
 
   const classes = useStyles();
 
+  console.log(question);
+
   return (
     <>
-      {question.question.map(q => (
-        <Typography variant='h4' gutterBottom>
-          Q. {q}
-        </Typography>
-      ))}
+      <div>
+        {question.question}
+      </div>
       {showAnswer && (
         <>
           <Typography variant='h4' className={classes.marginTop4}>

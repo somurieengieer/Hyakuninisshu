@@ -24,12 +24,11 @@ interface SongProps {
 export function SongCard({songInfo}: SongProps) {
 
   const classes = useStyles();
-  const songText = 'いまをかぎりのいのちともがな';
 
   return (
     <Box className={classes.root}>
       <Typography variant="h3">
-        {songText}
+        {songInfo.song_hiragana_shimo()}
       </Typography>
     </Box>
   );

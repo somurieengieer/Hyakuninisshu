@@ -8,6 +8,7 @@ import {theme} from "../materialui/theme";
 import {IntervalTimeSlider} from "../features/player/option/IntervalTimeSlider";
 import {ContinuousPlayBackCheckBox} from "../features/player/option/ContinuousPlayBackCheckBox";
 import {SongVisibleCheckBox} from "../features/player/option/SongVisibleCheckBox";
+import {ExamShimoKamiCardComponent} from "../features/memorize/ExamShimoKamiCardComponent";
 
 
 const useStyles = makeStyles({
@@ -86,7 +87,24 @@ export function PlayersComponent() {
                 className={classes.inline}
                 color="textPrimary"
               >
-                上の句の決まり字から歌を暗唱できるかをテストします
+                下の句の決まり字から歌を暗唱できるかをテストします
+              </Typography>
+            }
+          />
+        </ListItem>
+        <Divider variant="inset" component="li"/>
+        <ListItem alignItems="center">
+          <ExamShimoKamiCardComponent/>
+          <ListItemText
+            primary="下の句カードの暗記テスト"
+            secondary={
+              <Typography
+                component="span"
+                variant="body2"
+                className={classes.inline}
+                color="textPrimary"
+              >
+                下の句のカードから上の句の決まり字を暗唱できるかをテストします
               </Typography>
             }
           />
