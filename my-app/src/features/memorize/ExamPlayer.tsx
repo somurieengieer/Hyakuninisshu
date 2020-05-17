@@ -59,6 +59,7 @@ export function ExamPlayer({questions, callbackStop}: AudioPlayerProps) {
         enableMouseEvents
         resistance
         style={{height: '100%'}}
+        onClick={() => setShowAnswer(!showAnswer)}
       >
         {questions.map((question, index) => (
           <div>
