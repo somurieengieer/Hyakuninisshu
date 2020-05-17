@@ -49,7 +49,7 @@ const useStyles = makeStyles({
     flex: 1,
 
     // モーダルのサイズが変更しないようmain内のサイズが大きくなりすぎない制御
-    maxHeight: 'calc(100vh - 150px*2)',
+    maxHeight: 'calc(100vh - 150px*2)', // 150pxはヘッダーとフッターのサイズ
     overflow: 'scroll',
   },
   layoutFooter: {

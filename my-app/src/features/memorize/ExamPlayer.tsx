@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react';
-import {makeStyles} from "@material-ui/core/styles";
 import {Question, QuestionItem} from "./question/Question";
 import {nextSong, previousSong, resetSong, selectPlayingNumber, setSong} from "../song/playingSongSlice";
 import {useDispatch, useSelector} from "react-redux";
@@ -7,8 +6,6 @@ import {ModalPlayer} from "../player/ModalPlayer";
 import {QuestionFooter} from "./question/QuestionFooter";
 import SwipeableViews from 'react-swipeable-views';
 
-
-const useStyles = makeStyles({});
 
 interface AudioPlayerProps {
   questions: QuestionItem[]
@@ -18,7 +15,6 @@ interface AudioPlayerProps {
 // 序歌も含めて流す連番を引数とする
 export function ExamPlayer({questions, callbackStop}: AudioPlayerProps) {
 
-  const classes = useStyles();
   const dispatch = useDispatch();
 
   const playingIndex = useSelector(selectPlayingNumber);
@@ -62,6 +58,7 @@ export function ExamPlayer({questions, callbackStop}: AudioPlayerProps) {
         index={playingIndex}
         enableMouseEvents
         resistance
+        style={{height: '100%'}}
       >
         {questions.map((question, index) => (
           <div>
