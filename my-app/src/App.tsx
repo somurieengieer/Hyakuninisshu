@@ -1,6 +1,5 @@
 import React from 'react';
 import './App.css';
-import {Songs} from "./features/song/Songs";
 import {SongArchive} from "./features/songArchive/SongArchive";
 import {makeStyles} from "@material-ui/core/styles";
 import {theme} from "./materialui/theme";
@@ -27,7 +26,8 @@ function App() {
           <SongArchive/>
         </div>
 
-        <Songs/>
+        {/*曲のカスタマイズ機能はお蔵入り*/}
+        {/*<Songs/>*/}
       </div>
     </div>
   );

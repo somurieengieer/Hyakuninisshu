@@ -19,10 +19,12 @@ export function Songs() {
   const songNums: number[] = [...Array(100).keys()].map(n => n + 1);
 
   return (
-    <List className={classes.root}>
-      {songNums.map(num =>
-        (<Song key={num} songInfo={new SongInfo(num)}/>)
-      )}
-    </List>
+    <>
+      <List className={classes.root}>
+        {songNums.map(num =>
+          (<Song key={num} songInfo={new SongInfo(num)}/>)
+        )}
+      </List>
+    </>
   );
 }

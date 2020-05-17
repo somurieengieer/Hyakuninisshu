@@ -50,7 +50,7 @@ export function QuestionFooter({showAnswer, setShowAnswer, playPrevious, playNex
         </Grid>
         <Grid item xs={6} className={classes.button}>
           <QuestionBottomButton onClick={() => setShowAnswer(!showAnswer)}>
-            {!showAnswer ? "答え" : '答えを隠す'}
+            {!showAnswer ? "答えを表示" : '答えを隠す'}
           </QuestionBottomButton>
         </Grid>
         <Grid item xs={3} className={classes.button}>

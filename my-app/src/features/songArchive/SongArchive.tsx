@@ -8,7 +8,7 @@ import classNames from "classnames";
 
 const useStyles = makeStyles({
   root: {
-    minWidth: 250,
+    minWidth: 150,
   },
   active: {
     backgroundColor: '#F0D0A0',
@@ -31,10 +31,7 @@ export function SongArchive() {
   return (
     <>
       <Typography variant="subtitle1">
-        曲集を以下から選択してください。
-      </Typography>
-      <Typography variant="subtitle1">
-        チェックされた曲をランダムで読み上げ・テストします。
+        曲集を以下から選択してください
       </Typography>
       <div>
         {songArchives.map(({title}) => (
@@ -46,7 +43,7 @@ export function SongArchive() {
               )
             }>
               <CardContent>
-                <Typography variant="h6">
+                <Typography variant="caption">
                   {title}
                 </Typography>
               </CardContent>
