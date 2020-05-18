@@ -3,7 +3,13 @@ import {makeStyles} from "@material-ui/core/styles";
 import {Box, Grid} from "@material-ui/core";
 import {QuestionBottomButton} from "./QuestionBottomButton";
 import {useDispatch, useSelector} from "react-redux";
-import {resetShuffle, selectActiveNumbers, selectPlayingNumber} from "../../../slice/song/songSlice";
+import {
+  nextSong,
+  previousSong,
+  resetShuffle,
+  selectActiveNumbers,
+  selectPlayingNumber
+} from "../../../slice/song/songSlice";
 import {theme} from "../../../materialui/theme";
 
 
@@ -24,12 +30,10 @@ const useStyles = makeStyles({
 export interface QuestionProps {
   showAnswer: boolean,
   setShowAnswer: (val: boolean) => void
-  playPrevious: () => void
-  playNext: () => void
 }
 
 // 序歌も含めて流す連番を引数とする
-export function QuestionFooter({showAnswer, setShowAnswer, playPrevious, playNext}: QuestionProps) {
+export function QuestionFooter({showAnswer, setShowAnswer}: QuestionProps) {
   const classes = useStyles();
   const dispatch = useDispatch()
 
@@ -39,6 +43,12 @@ export function QuestionFooter({showAnswer, setShowAnswer, playPrevious, playNex
   const isFirstSong = playingIndex == 0;
   const isLastSong = playingIndex + 1 >= numberOfActiveSongs;
 
+  const playPrevious = () => {
+    dispatch(previousSong())
+  }
+  const playNext = () => {
+    dispatch(nextSong())
+  }
   const playFirst = () => {
     dispatch(resetShuffle())
   }

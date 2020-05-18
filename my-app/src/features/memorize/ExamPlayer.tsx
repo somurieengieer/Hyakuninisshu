@@ -4,7 +4,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {ModalPlayer} from "../player/ModalPlayer";
 import {QuestionFooter} from "./question/QuestionFooter";
 import SwipeableViews from 'react-swipeable-views';
-import {nextSong, previousSong, resetSong, selectPlayingNumber, setSong} from "../../slice/song/songSlice";
+import {resetSong, selectPlayingNumber, setSong} from "../../slice/song/songSlice";
 
 
 interface AudioPlayerProps {
@@ -24,14 +24,6 @@ export function ExamPlayer({questions, callbackStop}: AudioPlayerProps) {
     setShowAnswer(false)
   }, [playingIndex]);
 
-  const playNext = () => {
-    dispatch(nextSong())
-  };
-
-  const playPrevious = () => {
-    dispatch(previousSong())
-  };
-
   const stop = () => {
     dispatch(resetSong());
     callbackStop()
@@ -47,8 +39,6 @@ export function ExamPlayer({questions, callbackStop}: AudioPlayerProps) {
                  footerJSX={(
                    <QuestionFooter showAnswer={showAnswer}
                                    setShowAnswer={setShowAnswer}
-                                   playPrevious={playPrevious}
-                                   playNext={playNext}
                    />
                  )}
     >
