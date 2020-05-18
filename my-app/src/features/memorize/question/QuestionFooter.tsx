@@ -8,7 +8,9 @@ import {
   previousSong,
   resetShuffle,
   selectActiveNumbers,
-  selectPlayingNumber
+  selectPlayingNumber,
+  selectShowAnswer,
+  switchShowAnswer
 } from "../../../slice/song/songSlice";
 import {theme} from "../../../materialui/theme";
 
@@ -27,18 +29,14 @@ const useStyles = makeStyles({
   }
 });
 
-export interface QuestionProps {
-  showAnswer: boolean,
-  setShowAnswer: (val: boolean) => void
-}
-
 // 序歌も含めて流す連番を引数とする
-export function QuestionFooter({showAnswer, setShowAnswer}: QuestionProps) {
+export function QuestionFooter() {
   const classes = useStyles();
   const dispatch = useDispatch()
 
   const playingIndex = useSelector(selectPlayingNumber);
   const numberOfActiveSongs = useSelector(selectActiveNumbers).length;
+  const showAnswer = useSelector(selectShowAnswer)
 
   const isFirstSong = playingIndex == 0;
   const isLastSong = playingIndex + 1 >= numberOfActiveSongs;
@@ -53,6 +51,10 @@ export function QuestionFooter({showAnswer, setShowAnswer}: QuestionProps) {
     dispatch(resetShuffle())
   }
 
+  const switchShowAnswerProp = () => {
+    dispatch(switchShowAnswer())
+  }
+
   return (
     <Box display="flex" justifyContent="center" alignItems="center">
       <Grid container className={classes.root}>
@@ -63,7 +65,7 @@ export function QuestionFooter({showAnswer, setShowAnswer}: QuestionProps) {
           </QuestionBottomButton>
         </Grid>
         <Grid item xs={6} className={classes.button}>
-          <QuestionBottomButton onClick={() => setShowAnswer(!showAnswer)}>
+          <QuestionBottomButton onClick={switchShowAnswerProp}>
             {!showAnswer ? "答えを表示" : '答えを隠す'}
           </QuestionBottomButton>
         </Grid>
