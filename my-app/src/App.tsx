@@ -5,6 +5,7 @@ import {makeStyles} from "@material-ui/core/styles";
 import {theme} from "./materialui/theme";
 import {TopMenu} from "./layout/TopMenu";
 import {PlayersComponent} from "./layout/PlayersComponent";
+import {GoogleAdsSmall} from "./ads/GoogleAdsSmall";
 
 const useStyles = makeStyles({
   margin: {
@@ -20,17 +21,7 @@ function App() {
       <div>
         <TopMenu/>
 
-        {/*Google adsense advertisement */}
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-        <ins className="adsbygoogle"
-             style={{display: 'block', textAlign: 'center'}}
-             data-ad-layout="in-article"
-             data-ad-format="fluid"
-             data-ad-client="ca-pub-7646050836920456"
-             data-ad-slot="9249145427"></ins>
-        <script>
-          (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
+        <GoogleAdsSmall/>
 
         <PlayersComponent/>
 
@@ -40,6 +31,9 @@ function App() {
 
         {/*曲のカスタマイズ機能はお蔵入り*/}
         {/*<Songs/>*/}
+
+        <GoogleAdsSmall/>
+
       </div>
     </div>
   );
