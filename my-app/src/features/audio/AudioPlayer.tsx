@@ -95,9 +95,7 @@ export function AudioPlayer({songNums, callbackStop}: AudioPlayerProps) {
   };
 
   return (
-    <ModalPlayer callbackStop={stop}
-                 headerText={`${playingIndex + 1} / ${songNums.length}`}
-    >
+    <ModalPlayer callbackStop={stop}>
       <Box display="flex" justifyContent="center" alignItems="center"
       >
         <Box p={1}>
