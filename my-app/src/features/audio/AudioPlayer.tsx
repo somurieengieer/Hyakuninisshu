@@ -10,7 +10,7 @@ import {SongTypography} from "./SongTypography";
 import {theme} from "../../materialui/theme";
 import {SongInfo} from "../song/SongInfo";
 import {useDispatch, useSelector} from "react-redux";
-import {nextSong, previousSong, resetSong, selectPlayingNumber} from "../../slice/song/playingSongSlice";
+import {nextSong, previousSong, resetSong, selectPlayingNumber} from "../../slice/song/songSlice";
 import {ModalPlayer} from "../player/ModalPlayer";
 import {
   selectContinuousPlayBack,
