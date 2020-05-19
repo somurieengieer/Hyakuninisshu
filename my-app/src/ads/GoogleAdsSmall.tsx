@@ -15,11 +15,11 @@ export function GoogleAdsSmall() {
     <>
       {/*Google adsense advertisement */}
       <ins className="adsbygoogle"
-           style={{display: 'block', textAlign: 'center'}}
-           data-ad-layout="in-article"
+           style={{display: 'block'}}
            data-ad-format="fluid"
+           data-ad-layout-key="-fb+5w+4e-db+86"
            data-ad-client="ca-pub-7646050836920456"
-           data-ad-slot="9249145427"></ins>
+           data-ad-slot="6588052635"></ins>
     </>
   )
 }
