@@ -8,13 +8,13 @@ export const allNumbers: number[] = [...Array(100).keys()].map(n => n + 1);
 interface State {
   activeNumbers: number[]
   playingNumber: number
-  showAnswer: boolean
+  answerVisible: boolean
 }
 
 const initialState: State = {
   activeNumbers: allNumbers,
   playingNumber: 0,
-  showAnswer: false,
+  answerVisible: false,
 };
 
 export const playingSongSlice = createSlice({
@@ -37,29 +37,29 @@ export const playingSongSlice = createSlice({
     // playingNumberの変更イベント
     resetSong: (state, action: PayloadAction) => {
       state.playingNumber = 0
-      state.showAnswer = false
+      state.answerVisible = false
     },
     nextSong: (state, action: PayloadAction) => {
       state.playingNumber += 1
-      state.showAnswer = false
+      state.answerVisible = false
     },
     previousSong: (state, action: PayloadAction) => {
       state.playingNumber -= 1
-      state.showAnswer = false
+      state.answerVisible = false
     },
     setSong: (state, action: PayloadAction<number>) => {
       state.playingNumber = action.payload
-      state.showAnswer = false
+      state.answerVisible = false
     },
     resetShuffle: (state, action: PayloadAction) => {
       state.playingNumber = 0
       state.activeNumbers = shuffle(state.activeNumbers)
-      state.showAnswer = false
+      state.answerVisible = false
     },
 
     // showAnswerの変更イベント
-    switchShowAnswer: (state, action: PayloadAction) => {
-      state.showAnswer = !state.showAnswer
+    showAnswer: (state, action: PayloadAction) => {
+      state.answerVisible = true
     },
   },
 });
@@ -67,7 +67,7 @@ export const playingSongSlice = createSlice({
 export const {
   add, replace, remove,
   resetSong, nextSong, previousSong, setSong, resetShuffle,
-  switchShowAnswer,
+  showAnswer,
 } = playingSongSlice.actions;
 
 // The function below is called a selector and allows us to select a value from
@@ -75,6 +75,6 @@ export const {
 // in the slice file. For example: `useSelector((state: RootState) => state.counter.value)`
 export const selectActiveNumbers = (state: RootState) => state.song.activeNumbers;
 export const selectPlayingNumber = (state: RootState) => state.song.playingNumber;
-export const selectShowAnswer = (state: RootState) => state.song.showAnswer;
+export const selectShowAnswer = (state: RootState) => state.song.answerVisible;
 
 export default playingSongSlice.reducer;
