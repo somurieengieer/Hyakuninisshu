@@ -110,7 +110,7 @@ const allSongs = [
     song: ['天つ風', '雲の通ひ路', '吹き閉ぢよ', 'をとめの姿', 'しばしとどめむ'],
     singer: '僧正遍照',
     kimariji_kami: 'あまつ',
-    kimariji_shimo: ''
+    kimariji_shimo: 'をと'
   },
   {
     num: 13,
@@ -662,7 +662,7 @@ const allSongs = [
     num: 91,
     song: ['きりぎりす', '鳴くや霜夜の', 'さむしろに', '衣かたしき', 'ひとりかも寝む', '・・'],
     singer: '後京極摂政前太政大臣',
-    kimariji_kami: 'き',
+    kimariji_kami: 'きり',
     kimariji_shimo: 'ころもか'
   },
   {
