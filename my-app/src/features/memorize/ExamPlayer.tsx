@@ -47,8 +47,9 @@ export function ExamPlayer({questions, callbackStop}: AudioPlayerProps) {
         onClick={showAnswerMethod}
       >
         {questions.map((question, index) => (
-          <div>
-            <Question question={question} showAnswer={playingIndex == index && answerVisible}/>
+          <div key={`questionDiv${index}`}>
+            <Question question={question}
+                      showAnswer={playingIndex === index && answerVisible}/>
           </div>
         ))}
       </SwipeableViews>

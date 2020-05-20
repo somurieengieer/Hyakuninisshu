@@ -29,8 +29,6 @@ export function Question({question, showAnswer}: QuestionProps) {
 
   const classes = useStyles();
 
-  console.log(question);
-
   return (
     <>
       <div>
@@ -42,8 +40,8 @@ export function Question({question, showAnswer}: QuestionProps) {
             A. {question.answer}
           </Typography>
           <Box className={classes.marginTop4}>
-            {question.explanation.map(exp => (
-              <Typography variant='body2' className={classes.marginTop2}>
+            {question.explanation.map((exp, index) => (
+              <Typography key={`exp${index}`} variant='body2' className={classes.marginTop2}>
                 {exp}
               </Typography>
             ))}

@@ -38,7 +38,7 @@ export function QuestionFooter() {
   const numberOfActiveSongs = useSelector(selectActiveNumbers).length;
   const answerVisible = useSelector(selectShowAnswer)
 
-  const isFirstSong = playingIndex == 0;
+  const isFirstSong = playingIndex === 0;
   const isLastSong = playingIndex + 1 >= numberOfActiveSongs;
 
   const playPrevious = () => {

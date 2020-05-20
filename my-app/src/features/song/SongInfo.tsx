@@ -1,5 +1,3 @@
-import React from 'react';
-
 export class SongInfo {
   // !はnullではないという意味。初期化時にObject.assignで設定しているため!を付けないと初期化しろと怒られる
   public num!: number;
@@ -11,8 +9,8 @@ export class SongInfo {
   public path!: string;
 
   public constructor(songNumber: number) {
-    Object.assign(this, allSongs.find(s => s.num == songNumber));
-    Object.assign(this, allSongsHiragana.find(s => s.num == songNumber));
+    Object.assign(this, allSongs.find(s => s.num === songNumber));
+    Object.assign(this, allSongsHiragana.find(s => s.num === songNumber));
     const numStr = ('000' + songNumber).slice(-3);
     this.path = `${process.env.PUBLIC_URL}/songs/${numStr}番.m4a`;
   }

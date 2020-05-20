@@ -76,11 +76,11 @@ export function AudioPlayer({songNums, callbackStop}: AudioPlayerProps) {
   };
 
   const playing = () => {
-    return playStatus == PlayStatuses.PLAYING
+    return playStatus === PlayStatuses.PLAYING
   };
 
   const switchPlay = () => {
-    setPlayStatus(playStatus == PlayStatuses.PLAYING ? PlayStatuses.PAUSED : PlayStatuses.PLAYING)
+    setPlayStatus(playStatus === PlayStatuses.PLAYING ? PlayStatuses.PAUSED : PlayStatuses.PLAYING)
   };
 
   const playPrevious = () => {

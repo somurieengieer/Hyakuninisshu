@@ -14,18 +14,16 @@ export function SongVisibleCheckBox() {
   };
 
   return (
-    <div>
-      <FormControlLabel
-        control={
-          <Checkbox
-            checked={continuousPlayBack}
-            onChange={handleChange}
-            name="songVisible"
-            color="secondary"
-          />
-        }
-        label="歌を表示"
-      />
-    </div>
+    <FormControlLabel
+      control={
+        <Checkbox
+          checked={continuousPlayBack}
+          onChange={handleChange}
+          name="songVisible"
+          color="secondary"
+        />
+      }
+      label="歌を表示"
+    />
   );
 }

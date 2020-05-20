@@ -13,18 +13,16 @@ export function ContinuousPlayBackCheckBox() {
   };
 
   return (
-    <div>
-      <FormControlLabel
-        control={
-          <Checkbox
-            checked={continuousPlayBack}
-            onChange={handleChange}
-            name="continuousPlayBack"
-            color="secondary"
-          />
-        }
-        label="連続再生"
-      />
-    </div>
+    <FormControlLabel
+      control={
+        <Checkbox
+          checked={continuousPlayBack}
+          onChange={handleChange}
+          name="continuousPlayBack"
+          color="secondary"
+        />
+      }
+      label="連続再生"
+    />
   );
 }

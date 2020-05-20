@@ -11,31 +11,30 @@ const useStyles = makeStyles({
   margin: {
     marginTop: theme.spacing(4),
     marginBottom: theme.spacing(4),
+    marginLeft: theme.spacing(2),
+    marginRight: theme.spacing(2),
   },
 });
 
 function App() {
   const classes = useStyles();
   return (
-    <div className="App">
-      <div>
-        <TopMenu/>
+    <>
+      <TopMenu/>
 
-        <GoogleAdsSmall/>
+      <GoogleAdsSmall/>
 
-        <PlayersComponent/>
+      <PlayersComponent/>
 
-        <div className={classes.margin}>
-          <SongArchive/>
-        </div>
-
-        {/*曲のカスタマイズ機能はお蔵入り*/}
-        {/*<Songs/>*/}
-
-        <GoogleAdsSmall/>
-
+      <div className={classes.margin}>
+        <SongArchive/>
       </div>
-    </div>
+
+      {/*曲のカスタマイズ機能はお蔵入り*/}
+      {/*<Songs/>*/}
+
+      <GoogleAdsSmall/>
+    </>
   );
 }
 

@@ -3,8 +3,6 @@ import {makeStyles} from "@material-ui/core/styles";
 import {Box, IconButton, Modal, Typography} from "@material-ui/core";
 import CloseIcon from '@material-ui/icons/Close';
 import {theme} from "../../materialui/theme";
-import {useSelector} from "react-redux";
-import {selectActiveNumbers, selectPlayingNumber} from "../../slice/song/songSlice";
 
 
 const useStyles = makeStyles({
@@ -70,9 +68,6 @@ export const ModalPlayer: React.FC<ModalPlayerProps> =
   ({callbackStop, headerText, footerJSX, children}) => {
 
     const classes = useStyles();
-
-    const activeSongsLength = useSelector(selectActiveNumbers).length
-    const playingIndex = useSelector(selectPlayingNumber)
 
     const stop = () => {
       callbackStop()

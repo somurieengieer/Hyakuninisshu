@@ -12,14 +12,6 @@ import {ExamShimoKamiCardComponent} from "../features/memorize/ExamShimoKamiCard
 
 
 const useStyles = makeStyles({
-  playMenuContainer: {
-    width: '600px',
-  },
-  playMenuHeader: {},
-  playMenuItem: {
-    marginLeft: theme.spacing(2),
-  },
-
   root: {
     width: '100%',
     maxWidth: '600px',
@@ -36,92 +28,86 @@ export function PlayersComponent() {
 
   return (
     <Box display="flex" justifyContent="center" m={1} p={1}>
-      <List className={classes.root}>
-        <ListItem alignItems="center">
-          <AudioPlayerComponent/>
-          <ListItemText
-            primary="歌の読み上げ"
-            secondary={
-              <React.Fragment>
+      <Box>
+        <List className={classes.root}>
+          <ListItem alignItems="center">
+            <AudioPlayerComponent/>
+            <ListItemText
+              primary="歌の読み上げ"
+              secondary={
+                <React.Fragment>
+                  <Typography
+                    component="span"
+                    variant="body2"
+                    className={classes.inline}
+                    color="textPrimary"
+                  >
+                    序歌を読んだ後、選択した歌をランダムに読み上げます。
+                  </Typography>
+                  <br/>
+                  <ContinuousPlayBackCheckBox/>
+                  <br/>
+                  <IntervalTimeSlider/>
+                  <br/>
+                  <SongVisibleCheckBox/>
+                </React.Fragment>
+              }
+            />
+          </ListItem>
+          <Divider variant="inset" component="li"/>
+          <ListItem alignItems="center">
+            <ExamKamiShimoComponent/>
+            <ListItemText
+              primary="上の句決まり字の暗記テスト"
+              secondary={
                 <Typography
                   component="span"
                   variant="body2"
                   className={classes.inline}
                   color="textPrimary"
                 >
-                  序歌を読んだ後、選択した歌をランダムに読み上げます。
+                  上の句の決まり字から歌を暗唱できるかをテストします
                 </Typography>
-                <ContinuousPlayBackCheckBox/>
-                <IntervalTimeSlider/>
-                <SongVisibleCheckBox/>
-              </React.Fragment>
-            }
-          />
-        </ListItem>
-        <Divider variant="inset" component="li"/>
-        <ListItem alignItems="center">
-          <ExamKamiShimoComponent/>
-          <ListItemText
-            primary="上の句決まり字の暗記テスト"
-            secondary={
-              <Typography
-                component="span"
-                variant="body2"
-                className={classes.inline}
-                color="textPrimary"
-              >
-                上の句の決まり字から歌を暗唱できるかをテストします
-              </Typography>
-            }
-          />
-        </ListItem>
-        <Divider variant="inset" component="li"/>
-        <ListItem alignItems="center">
-          <ExamShimoKamiComponent/>
-          <ListItemText
-            primary="下の句決まり字の暗記テスト"
-            secondary={
-              <Typography
-                component="span"
-                variant="body2"
-                className={classes.inline}
-                color="textPrimary"
-              >
-                下の句の決まり字から歌を暗唱できるかをテストします
-              </Typography>
-            }
-          />
-        </ListItem>
-        <Divider variant="inset" component="li"/>
-        <ListItem alignItems="center">
-          <ExamShimoKamiCardComponent/>
-          <ListItemText
-            primary="下の句カードの暗記テスト"
-            secondary={
-              <Typography
-                component="span"
-                variant="body2"
-                className={classes.inline}
-                color="textPrimary"
-              >
-                下の句のカードから上の句の決まり字を暗唱できるかをテストします
-              </Typography>
-            }
-          />
-        </ListItem>
-      </List>
+              }
+            />
+          </ListItem>
+          <Divider variant="inset" component="li"/>
+          <ListItem alignItems="center">
+            <ExamShimoKamiComponent/>
+            <ListItemText
+              primary="下の句決まり字の暗記テスト"
+              secondary={
+                <Typography
+                  component="span"
+                  variant="body2"
+                  className={classes.inline}
+                  color="textPrimary"
+                >
+                  下の句の決まり字から歌を暗唱できるかをテストします
+                </Typography>
+              }
+            />
+          </ListItem>
+          <Divider variant="inset" component="li"/>
+          <ListItem alignItems="center">
+            <ExamShimoKamiCardComponent/>
+            <ListItemText
+              primary="下の句カードの暗記テスト"
+              secondary={
+                <Typography
+                  component="span"
+                  variant="body2"
+                  className={classes.inline}
+                  color="textPrimary"
+                >
+                  下の句のカードから上の句の決まり字を暗唱できるかをテストします
+                </Typography>
+              }
+            />
+          </ListItem>
+        </List>
+      </Box>
     </Box>
-
-    // <FlexCenter>
-    //   <Typography>読み上げ</Typography>
-    //   <AudioPlayerComponent/>
-    // </FlexCenter>
-    // <FlexCenter>
-    //   <Box m={1} p={1}><ExamKamiShimoComponent/></Box>
-    // </FlexCenter>
-    // <FlexCenter>
-    //   <Box m={1} p={1}><ExamShimoKamiComponent/></Box>
-    // </FlexCenter>
   );
 }
 

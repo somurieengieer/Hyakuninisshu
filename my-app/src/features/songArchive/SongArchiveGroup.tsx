@@ -48,7 +48,7 @@ export function SongArchiveGroup({groupTitle, archives}: SongArchiveGroupProps) 
             <Card className={
               classNames(
                 classes.root,
-                {[classes.active]: activeArchive.title == archive.title}
+                {[classes.active]: activeArchive.title === archive.title}
               )
             }>
               <CardContent>

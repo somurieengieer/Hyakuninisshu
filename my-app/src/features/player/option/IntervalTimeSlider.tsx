@@ -11,7 +11,7 @@ import {selectIntervalSecond, setIntervalSecond} from "../../../slice/player/opt
 const useStyles = makeStyles({
   root: {},
   sliderRoot: {
-    width: 250,
+    width: 240,
   },
   input: {
     width: 42,
@@ -36,15 +36,23 @@ export function IntervalTimeSlider() {
   };
 
   return (
-    <div className={classes.root}>
-      <Typography id="input-slider" gutterBottom>
+    <>
+      <Typography id="input-slider"
+                  component="span"
+      >
         歌の読み上げ間隔
       </Typography>
-      <Grid container spacing={2} alignItems="center" className={classes.sliderRoot}>
-        <Grid item>
+      <Grid container spacing={2} alignItems="center" className={classes.sliderRoot}
+            component="span"
+      >
+        <Grid item
+              component="span"
+        >
           <SpeedIcon/>
         </Grid>
-        <Grid item xs>
+        <Grid item xs
+              component="span"
+        >
           <Slider
             value={wrapUpSecond}
             onChange={handleSliderChange}
@@ -54,7 +62,9 @@ export function IntervalTimeSlider() {
             max={10}
           />
         </Grid>
-        <Grid item>
+        <Grid item
+              component="span"
+        >
           <Input
             className={classes.input}
             value={wrapUpSecond}
@@ -72,6 +82,6 @@ export function IntervalTimeSlider() {
           />
         </Grid>
       </Grid>
-    </div>
+    </>
   );
 }

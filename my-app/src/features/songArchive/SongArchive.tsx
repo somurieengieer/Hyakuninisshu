@@ -27,7 +27,7 @@ export function SongArchive() {
       </Typography>
       <div className={classes.archiveGroups}>
         {songArchiveGroups.map(({groupTitle, archives}) => (
-          <div className={classes.archiveGroup}>
+          <div className={classes.archiveGroup} key={groupTitle}>
             <SongArchiveGroup groupTitle={groupTitle} archives={archives}/>
           </div>
         ))}

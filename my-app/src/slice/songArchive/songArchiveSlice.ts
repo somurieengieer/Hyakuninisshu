@@ -61,10 +61,9 @@ export const songArchives: SongArchive[] =
     .concat(songArchives5colors)
     .concat(songArchives20cards)
     .concat(songArchives10cards)
-console.log(songArchives)
 
 export function getSongArchive(title: string): SongArchive {
-  return (songArchives.find(s => s.title == title) as SongArchive)
+  return (songArchives.find(s => s.title === title) as SongArchive)
 }
 
 interface State {
