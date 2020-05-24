@@ -1,7 +1,7 @@
 import React from 'react';
 import {Question, QuestionItem} from "./question/Question";
 import {useDispatch, useSelector} from "react-redux";
-import {ModalPlayer} from "../player/ModalPlayer";
+import {PlayerFrame} from "../player/PlayerFrame";
 import {QuestionFooter} from "./question/QuestionFooter";
 import SwipeableViews from 'react-swipeable-views';
 import {resetSong, selectPlayingNumber, selectShowAnswer, setSong, showAnswer} from "../../slice/song/songSlice";
@@ -34,7 +34,7 @@ export function ExamPlayer({questions, callbackStop}: AudioPlayerProps) {
   }
 
   return (
-    <ModalPlayer callbackStop={stop}
+    <PlayerFrame callbackStop={stop}
                  headerText={`${playingIndex + 1} / ${questions.length}`}
                  footerJSX={(<QuestionFooter/>)}
     >
@@ -53,6 +53,6 @@ export function ExamPlayer({questions, callbackStop}: AudioPlayerProps) {
           </div>
         ))}
       </SwipeableViews>
-    </ModalPlayer>
+    </PlayerFrame>
   );
 }

@@ -11,7 +11,7 @@ import {theme} from "../../materialui/theme";
 import {SongInfo} from "../song/SongInfo";
 import {useDispatch, useSelector} from "react-redux";
 import {nextSong, previousSong, resetSong, selectPlayingNumber} from "../../slice/song/songSlice";
-import {ModalPlayer} from "../player/ModalPlayer";
+import {PlayerFrame} from "../player/PlayerFrame";
 import {
   selectContinuousPlayBack,
   selectIntervalSecond,
@@ -95,7 +95,7 @@ export function AudioPlayer({songNums, callbackStop}: AudioPlayerProps) {
   };
 
   return (
-    <ModalPlayer callbackStop={stop}
+    <PlayerFrame callbackStop={stop}
                  headerText={`${playingIndex + 1} / ${songNums.length}`}
     >
       <Box display="flex" justifyContent="center" alignItems="center"
@@ -134,6 +134,6 @@ export function AudioPlayer({songNums, callbackStop}: AudioPlayerProps) {
       <Box textAlign={"right"}>
         <SongVisibleCheckBox/>
       </Box>
-    </ModalPlayer>
+    </PlayerFrame>
   );
 }

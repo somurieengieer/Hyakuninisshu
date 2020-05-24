@@ -2,17 +2,20 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import {store} from './app/store';
+import {history, store} from './app/store';
 import {Provider} from 'react-redux';
 import * as serviceWorker from './serviceWorker';
 import {MuiThemeProvider} from "@material-ui/core";
 import {theme} from "./materialui/theme";
+import {ConnectedRouter} from "connected-react-router";
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <MuiThemeProvider theme={theme}>
-        <App />
+        <ConnectedRouter history={history}>
+          <App/>
+        </ConnectedRouter>
       </MuiThemeProvider>
     </Provider>
   </React.StrictMode>,

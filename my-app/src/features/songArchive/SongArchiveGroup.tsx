@@ -3,7 +3,7 @@ import {makeStyles} from "@material-ui/core/styles";
 import {Button, Card, CardContent, Typography} from "@material-ui/core";
 import {useDispatch, useSelector} from "react-redux";
 import {replace} from '../../slice/song/songSlice';
-import {getSongArchive, selectActiveArchive, setArchive, SongArchive} from "../../slice/songArchive/songArchiveSlice";
+import {selectActiveArchive, setArchiveByTitle, SongArchive} from "../../slice/songArchive/songArchiveSlice";
 import classNames from "classnames";
 
 const useStyles = makeStyles({
@@ -26,7 +26,7 @@ export function SongArchiveGroup({groupTitle, archives}: SongArchiveGroupProps) 
   const activeArchive = useSelector(selectActiveArchive);
 
   const changeArchive = (selectedArchive: SongArchive): void => {
-    dispatch(setArchive(getSongArchive(selectedArchive.title)))
+    dispatch(setArchiveByTitle(selectedArchive.title))
     dispatch(replace(selectedArchive.songs))
   };
 

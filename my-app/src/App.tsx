@@ -1,37 +1,39 @@
 import React from 'react';
 import './App.css';
-import {SongArchive} from "./features/songArchive/SongArchive";
-import {makeStyles} from "@material-ui/core/styles";
-import {theme} from "./materialui/theme";
-import {TopMenu} from "./layout/TopMenu";
-import {PlayersComponent} from "./layout/PlayersComponent";
+import {TopMenu} from "./layout/molecule/TopMenu";
 import {GoogleAdsSmall} from "./ads/GoogleAdsSmall";
+import {Route, Switch} from "react-router";
+import {myUrl} from "./layout/Urls";
+import {PlayPage} from "./layout/organism/PlayPage";
+import {TopPage} from "./layout/organism/TopPage";
+import {ExamKamiShimoPage} from "./layout/organism/ExamKamiShimoPage";
+import {ExamShimoKamiPage} from "./layout/organism/ExamShimoKamiPage";
+import {ExamShimoKamiCardPage} from "./layout/organism/ExamShimoKamiCardPage";
 
-const useStyles = makeStyles({
-  margin: {
-    marginTop: theme.spacing(4),
-    marginBottom: theme.spacing(4),
-    marginLeft: theme.spacing(2),
-    marginRight: theme.spacing(2),
-  },
-});
 
 function App() {
-  const classes = useStyles();
   return (
     <>
       <TopMenu/>
-
       <GoogleAdsSmall/>
 
-      <PlayersComponent/>
-
-      <div className={classes.margin}>
-        <SongArchive/>
-      </div>
-
-      {/*曲のカスタマイズ機能はお蔵入り*/}
-      {/*<Songs/>*/}
+      <Switch>
+        <Route exact path={myUrl.topPage}>
+          <TopPage/>
+        </Route>
+        <Route path={myUrl.player}>
+          <PlayPage/>
+        </Route>
+        <Route path={myUrl.examKamiShimoById(':archiveTitle')}>
+          <ExamKamiShimoPage/>
+        </Route>
+        <Route path={myUrl.examShimoKamiById(':archiveTitle')}>
+          <ExamShimoKamiPage/>
+        </Route>
+        <Route path={myUrl.examShimoKamiCardById(':archiveTitle')}>
+          <ExamShimoKamiCardPage/>
+        </Route>
+      </Switch>
 
       <GoogleAdsSmall/>
     </>

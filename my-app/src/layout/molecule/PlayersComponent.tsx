@@ -1,14 +1,14 @@
 import React from 'react';
-import {AudioPlayerComponent} from "../features/audio/AudioPlayerComponent";
-import {ExamKamiShimoComponent} from "../features/memorize/ExamKamiShimoComponent";
-import {ExamShimoKamiComponent} from "../features/memorize/ExamShimoKamiComponent";
 import {makeStyles} from "@material-ui/core/styles";
 import {Box, Divider, List, ListItem, ListItemText, Typography} from "@material-ui/core";
-import {theme} from "../materialui/theme";
-import {IntervalTimeSlider} from "../features/player/option/IntervalTimeSlider";
-import {ContinuousPlayBackCheckBox} from "../features/player/option/ContinuousPlayBackCheckBox";
-import {SongVisibleCheckBox} from "../features/player/option/SongVisibleCheckBox";
-import {ExamShimoKamiCardComponent} from "../features/memorize/ExamShimoKamiCardComponent";
+import {theme} from "../../materialui/theme";
+import {IntervalTimeSlider} from "../../features/player/option/IntervalTimeSlider";
+import {ContinuousPlayBackCheckBox} from "../../features/player/option/ContinuousPlayBackCheckBox";
+import {SongVisibleCheckBox} from "../../features/player/option/SongVisibleCheckBox";
+import {PlayButton} from "../../features/player/PlayButton";
+import {myUrl} from "../Urls";
+import {selectActiveArchive} from "../../slice/songArchive/songArchiveSlice";
+import {useSelector} from "react-redux";
 
 
 const useStyles = makeStyles({
@@ -25,13 +25,14 @@ const useStyles = makeStyles({
 export function PlayersComponent() {
 
   const classes = useStyles();
+  const activeArchiveTitle = useSelector(selectActiveArchive).title
 
   return (
     <Box display="flex" justifyContent="center" m={1} p={1}>
       <Box>
         <List className={classes.root}>
           <ListItem alignItems="center">
-            <AudioPlayerComponent/>
+            <PlayButton url={myUrl.player}/>
             <ListItemText
               primary="歌の読み上げ"
               secondary={
@@ -56,7 +57,7 @@ export function PlayersComponent() {
           </ListItem>
           <Divider variant="inset" component="li"/>
           <ListItem alignItems="center">
-            <ExamKamiShimoComponent/>
+            <PlayButton url={myUrl.examKamiShimoById(activeArchiveTitle)}/>
             <ListItemText
               primary="上の句決まり字の暗記テスト"
               secondary={
@@ -73,7 +74,7 @@ export function PlayersComponent() {
           </ListItem>
           <Divider variant="inset" component="li"/>
           <ListItem alignItems="center">
-            <ExamShimoKamiComponent/>
+            <PlayButton url={myUrl.examShimoKamiById(activeArchiveTitle)}/>
             <ListItemText
               primary="下の句決まり字の暗記テスト"
               secondary={
@@ -90,7 +91,7 @@ export function PlayersComponent() {
           </ListItem>
           <Divider variant="inset" component="li"/>
           <ListItem alignItems="center">
-            <ExamShimoKamiCardComponent/>
+            <PlayButton url={myUrl.examShimoKamiCardById(activeArchiveTitle)}/>
             <ListItemText
               primary="下の句カードの暗記テスト"
               secondary={
