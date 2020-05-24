@@ -41,11 +41,10 @@ const useStyles = makeStyles({
 
 interface AudioPlayerProps {
   songNums: number[]
-  callbackStop: () => void
 }
 
 // 序歌も含めて流す連番を引数とする
-export function AudioPlayer({songNums, callbackStop}: AudioPlayerProps) {
+export function AudioPlayer({songNums}: AudioPlayerProps) {
   const classes = useStyles();
   const dispatch = useDispatch();
 
@@ -87,17 +86,8 @@ export function AudioPlayer({songNums, callbackStop}: AudioPlayerProps) {
     dispatch(previousSong())
   };
 
-
-  const stop = () => {
-    setPlayStatus(PlayStatuses.STOPPED);
-    dispatch(resetSong());
-    callbackStop()
-  };
-
   return (
-    <PlayerFrame callbackStop={stop}
-                 headerText={`${playingIndex + 1} / ${songNums.length}`}
-    >
+    <PlayerFrame headerText={`${playingIndex + 1} / ${songNums.length}`}>
       <Box display="flex" justifyContent="center" alignItems="center"
       >
         <Box p={1}>

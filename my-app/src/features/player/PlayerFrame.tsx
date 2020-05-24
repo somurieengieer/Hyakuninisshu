@@ -62,14 +62,13 @@ const useStyles = makeStyles({
 });
 
 interface ModalPlayerProps {
-  callbackStop: () => void
   headerText: string
   footerJSX?: JSX.Element
 }
 
 // 序歌も含めて流す連番を引数とする
 export const PlayerFrame: React.FC<ModalPlayerProps> =
-  ({callbackStop, headerText, footerJSX, children}) => {
+  ({headerText, footerJSX, children}) => {
 
     const classes = useStyles();
 

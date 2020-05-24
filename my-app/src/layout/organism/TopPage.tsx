@@ -1,6 +1,6 @@
 import React from 'react';
 import {makeStyles} from "@material-ui/core/styles";
-import {PlayersComponent} from "../molecule/PlayersComponent";
+import {PlayersComponent} from "./PlayersComponent";
 import {SongArchive} from "../../features/songArchive/SongArchive";
 import {theme} from "../../materialui/theme";
 

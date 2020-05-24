@@ -34,8 +34,7 @@ export function ExamPlayer({questions, callbackStop}: AudioPlayerProps) {
   }
 
   return (
-    <PlayerFrame callbackStop={stop}
-                 headerText={`${playingIndex + 1} / ${questions.length}`}
+    <PlayerFrame headerText={`${playingIndex + 1} / ${questions.length}`}
                  footerJSX={(<QuestionFooter/>)}
     >
       <SwipeableViews
