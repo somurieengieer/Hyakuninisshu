@@ -4,26 +4,20 @@ import {useDispatch, useSelector} from "react-redux";
 import {PlayerFrame} from "../player/PlayerFrame";
 import {QuestionFooter} from "./question/QuestionFooter";
 import SwipeableViews from 'react-swipeable-views';
-import {resetSong, selectPlayingNumber, selectShowAnswer, setSong, showAnswer} from "../../slice/song/songSlice";
+import {selectPlayingNumber, selectShowAnswer, setSong, showAnswer} from "../../slice/song/songSlice";
 
 
 interface AudioPlayerProps {
   questions: QuestionItem[]
-  callbackStop: () => void
 }
 
 // 序歌も含めて流す連番を引数とする
-export function ExamPlayer({questions, callbackStop}: AudioPlayerProps) {
+export function ExamPlayer({questions,}: AudioPlayerProps) {
 
   const dispatch = useDispatch();
 
   const playingIndex = useSelector(selectPlayingNumber);
   const answerVisible = useSelector(selectShowAnswer);
-
-  const stop = () => {
-    dispatch(resetSong());
-    callbackStop()
-  };
 
   const onChangeIndex = (index: number, indexLatest: number) => {
     dispatch(setSong(index))

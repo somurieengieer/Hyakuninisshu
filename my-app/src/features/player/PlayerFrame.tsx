@@ -21,12 +21,7 @@ const useStyles = makeStyles({
     minHeight: '150px', //背景画像の枠を確保するため
   },
   paperMain: {
-    [theme.breakpoints.down('xs')]: {
-      width: 300
-    },
-    [theme.breakpoints.up('sm')]: {
-      width: 560,
-    },
+    width: '100%',
   },
   paperBottom: {
     backgroundImage: `url(${process.env.PUBLIC_URL}/image/wagara_bottom.png)`,
@@ -53,7 +48,7 @@ const useStyles = makeStyles({
     flex: 1,
 
     // モーダルのサイズが変更しないようmain内のサイズが大きくなりすぎない制御
-    // maxHeight: 'calc(100vh - 150px*2)', // 150pxはヘッダーとフッターのサイズ
+    maxHeight: 'calc(100vh - 150px*2 - 56px)', // 150pxはヘッダーとフッターのサイズ
     overflow: 'scroll',
   },
   layoutFooter: {
@@ -84,16 +79,16 @@ export const PlayerFrame: React.FC<ModalPlayerProps> =
         </Box>
 
         <Box display="flex" justifyContent="center" className={classes.layoutMain}>
-            <Box className={[classes.paperMain].join(' ')}>
-              {children}
-            </Box>
-          </Box>
-
-          <Box display="flex" justifyContent="center"
-               className={[classes.paperBottom, classes.layoutFooter].join(' ')}
-          >
-            {footerJSX}
+          <Box className={[classes.paperMain].join(' ')}>
+            {children}
           </Box>
         </Box>
+
+        <Box display="flex" justifyContent="center"
+             className={[classes.paperBottom, classes.layoutFooter].join(' ')}
+        >
+          {footerJSX}
+        </Box>
+      </Box>
     );
   };

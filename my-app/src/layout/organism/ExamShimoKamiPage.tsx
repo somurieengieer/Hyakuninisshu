@@ -1,17 +1,14 @@
 import React from 'react';
-import {useDispatch, useSelector} from "react-redux";
+import {useSelector} from "react-redux";
 import {selectActiveNumbers} from "../../slice/song/songSlice";
 import {ExamPlayer} from "../../features/memorize/ExamPlayer";
 import {shuffle} from "../../utils/Utils";
-import {push} from "connected-react-router";
-import {myUrl} from "../Urls";
 import {SongInfo} from "../../features/song/SongInfo";
 import {QuestionText} from "../../features/memorize/question/QuestionText";
 
 
 export function ExamShimoKamiPage() {
 
-  const dispatch = useDispatch()
   const activeSongNums: number[] = useSelector(selectActiveNumbers);
   const questions = activeSongNums
     .map(num => new SongInfo(num))
@@ -26,12 +23,7 @@ export function ExamShimoKamiPage() {
       ],
     }));
 
-  const goToTopPage = () => {
-    dispatch(push(myUrl.topPage))
-  }
-
   return (
-    <ExamPlayer questions={shuffle(questions)} callbackStop={goToTopPage}/>
+    <ExamPlayer questions={shuffle(questions)}/>
   );
 }
-

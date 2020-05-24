@@ -11,6 +11,14 @@ const useStyles = makeStyles({
   marginTop4: {
     marginTop: theme.spacing(4)
   },
+  answerArea: {
+    [theme.breakpoints.down('xs')]: {
+      width: 300
+    },
+    [theme.breakpoints.up('sm')]: {
+      width: 560,
+    },
+  },
 });
 
 export interface QuestionItem {
@@ -30,24 +38,26 @@ export function Question({question, showAnswer}: QuestionProps) {
   const classes = useStyles();
 
   return (
-    <>
-      <div>
-        {question.question}
-      </div>
-      {showAnswer && (
-        <>
-          <Typography variant='h4' className={classes.marginTop4}>
-            A. {question.answer}
-          </Typography>
-          <Box className={classes.marginTop4}>
-            {question.explanation.map((exp, index) => (
-              <Typography key={`exp${index}`} variant='body2' className={classes.marginTop2}>
-                {exp}
-              </Typography>
-            ))}
-          </Box>
-        </>
-      )}
-    </>
+    <Box display="flex" justifyContent="center">
+      <Box className={classes.answerArea}>
+        <div>
+          {question.question}
+        </div>
+        {showAnswer && (
+          <>
+            <Typography variant='h4' className={classes.marginTop4}>
+              A. {question.answer}
+            </Typography>
+            <Box className={classes.marginTop4}>
+              {question.explanation.map((exp, index) => (
+                <Typography key={`exp${index}`} variant='body2' className={classes.marginTop2}>
+                  {exp}
+                </Typography>
+              ))}
+            </Box>
+          </>
+        )}
+      </Box>
+    </Box>
   )
 }
