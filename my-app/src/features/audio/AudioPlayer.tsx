@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {makeStyles} from "@material-ui/core/styles";
 import {Box, IconButton} from "@material-ui/core";
 import PlayCircleFilledIcon from '@material-ui/icons/PlayCircleFilled';
@@ -18,6 +18,7 @@ import {
   selectSongVisible
 } from "../../slice/player/option/playOptionSlice"
 import {SongVisibleCheckBox} from "../player/option/SongVisibleCheckBox";
+import {useLocation} from "react-router";
 
 
 const useStyles = makeStyles({
@@ -47,6 +48,7 @@ interface AudioPlayerProps {
 export function AudioPlayer({songNums}: AudioPlayerProps) {
   const classes = useStyles();
   const dispatch = useDispatch();
+  const location = useLocation()
 
   const [playStatus, setPlayStatus] = useState<PlayStatuses>(PlayStatuses.PLAYING);
   const playingIndex = useSelector(selectPlayingNumber);
@@ -85,6 +87,10 @@ export function AudioPlayer({songNums}: AudioPlayerProps) {
   const playPrevious = () => {
     dispatch(previousSong())
   };
+
+  useEffect(() => {
+    dispatch(resetSong())
+  }, [location])
 
   return (
     <PlayerFrame headerText={`${playingIndex + 1} / ${songNums.length}`}>

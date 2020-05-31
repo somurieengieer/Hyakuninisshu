@@ -1,10 +1,11 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Question, QuestionItem} from "./question/Question";
 import {useDispatch, useSelector} from "react-redux";
 import {PlayerFrame} from "../player/PlayerFrame";
 import {QuestionFooter} from "./question/QuestionFooter";
 import SwipeableViews from 'react-swipeable-views';
-import {selectPlayingNumber, selectShowAnswer, setSong, showAnswer} from "../../slice/song/songSlice";
+import {resetSong, selectPlayingNumber, selectShowAnswer, setSong, showAnswer} from "../../slice/song/songSlice";
+import {useLocation} from "react-router";
 
 
 interface AudioPlayerProps {
@@ -18,6 +19,7 @@ export function ExamPlayer({questions,}: AudioPlayerProps) {
 
   const playingIndex = useSelector(selectPlayingNumber);
   const answerVisible = useSelector(selectShowAnswer);
+  const location = useLocation()
 
   const onChangeIndex = (index: number, indexLatest: number) => {
     dispatch(setSong(index))
@@ -26,6 +28,10 @@ export function ExamPlayer({questions,}: AudioPlayerProps) {
   const showAnswerMethod = () => {
     dispatch(showAnswer())
   }
+
+  useEffect(() => {
+    dispatch(resetSong())
+  }, [location])
 
   return (
     <PlayerFrame headerText={`${playingIndex + 1} / ${questions.length}`}
